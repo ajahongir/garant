@@ -1,4 +1,41 @@
-/*
-  Override default refinery application CSS below.
-  Formatting applies to all frontend.
-*/
+/*#footer*/
+footer div {
+  padding: 10px 25px;
+  height:100px;
+  background-color: transparent;
+  background-image:url('/images/footer_bg.png');
+  background-repeat: repeat-x;
+  font-family: helvetica,arial,freesans,clean,sans-serif;
+  font-size: 11px;
+  color: #FFFFFF;
+}
+
+/*Header*/
+header { padding-top: 50px; }
+.phone { font-size: 30px; }
+
+/*#Menu*/
+#menu ul {
+  list-style: none;
+  padding: 0px;
+}
+#menu ul li {
+  float: left;
+  margin-left: 20px;
+}
+#menu ul li a {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #0080FF;
+  font-family: Arial, Helvetica, Tahoma, sans-serif;
+}
+#menu ul li.selected a, #menu ul li a:hover {
+  background: #CCC;
+}
+
+/*#Varios*/
+.left {float:left;}
+.right {float:right;}
+hr {color: #BDBDBD;}
+

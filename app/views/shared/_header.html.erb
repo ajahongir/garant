@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <td>
+      <image src="/images/top_logo.png" alt="<%= RefinerySetting.find_or_set(:site_name, 'ГАРАНТИНВЕСТ') %>">
+    </td>
+    <td valign="bottom">
+      <%= render(:partial => "/shared/menu", :locals => {
+                   :dom_id => 'menu',
+                   :css => 'menu'
+                 }) %>
+    </td>
+    <td valign="top">
+      <span class="phone">+ 38(0692)45-11-11</span>
+    </td>
+  </tr>
+</table>
+
