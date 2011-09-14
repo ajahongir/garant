@@ -5,7 +5,7 @@ footer div {
   background-color: transparent;
   background-image:url('/images/footer_bg.png');
   background-repeat: repeat-x;
-  font-family: helvetica,arial,freesans,clean,sans-serif;
+  font-family: Arial, Tahoma, Verdana;
   font-size: 11px;
   color: #FFFFFF;
 }
@@ -20,22 +20,23 @@ header { padding-top: 50px; }
   padding: 0px;
 }
 #menu ul li {
-  float: left;
   margin-left: 20px;
+  float: left;
 }
 #menu ul li a {
   display: block;
   padding: 5px 10px;
   text-decoration: none;
   color: #0080FF;
-  font-family: Arial, Helvetica, Tahoma, sans-serif;
+  font-family: Arial, Tahoma, Verdana;
 }
 #menu ul li.selected a, #menu ul li a:hover {
-  background: #CCC;
+/*  background: #CCC;*/
 }
 
 /*#Varios*/
 .left {float:left;}
 .right {float:right;}
 hr {color: #BDBDBD;}
+a {color: #006ba8}
 

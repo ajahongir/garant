@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Garant</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
+    <title>Garant</title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
 
-<%= yield %>
+    <div class="content_head">
+      <table>
+        <tr>
+          <td>
+            <image src="about_us_logo.png">
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-</body>
+    <div class="content_body">
+      <%= yield %>
+    </div>
+
+    <div class="content_foot">
+
+    </div>
+
+  </body>
 </html>
 
