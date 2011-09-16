@@ -24,6 +24,7 @@ public/themes/*
 # Public Cache
 public/javascripts/cache
 public/stylesheets/cache
+public/system
 
 # Vendor Cache
 vendor/cache
