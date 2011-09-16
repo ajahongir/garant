@@ -3,17 +3,43 @@
           :object => @target,
           :include_object_name => true
         } %>
-  
+
   <div class='field'>
     <%= f.label :name -%>
-    <%= f.text_field :name, :class => 'larger widest'  -%>
+    <%= f.text_field :name, :class => 'larger widest' -%>
   </div>
-  
+
   <div class='field'>
-    <%= f.label :title -%>
-    <%= f.text_field :title  -%>
+    <%= f.label :address -%>
+    <%= f.text_field :address, :class => 'larger widest' -%>
   </div>
-  
+
+  <div class='field'>
+    <%= f.label :description -%>
+    <%= f.text_area :description, :cols => 40, :rows => 15, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :photo -%>
+    <%= select(:target, :photo, Image.all.map{|i| [i.image_name, i.image_uid] }, :class => 'larger widest') -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :date_start -%>
+    <%= select_date Date.today, :prefix => "target[date_start]", :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :date_end -%>
+    <%= select_date Date.tomorrow, :prefix => "target[date_end]", :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :floors -%>
+    <%= f.number_field :floors, :class => 'larger widest' -%>
+  </div>
+
+
   <%= render :partial => "/shared/admin/form_actions",
               :locals => {
                 :f => f,
@@ -22,3 +48,4 @@
                 :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @target.name)
               } %>
 <% end -%>
+

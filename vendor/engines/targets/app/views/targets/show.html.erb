@@ -1,33 +1,71 @@
-<% content_for :body_content_title do %>
-  <%= @target.name %>
-<% end %>
+<script type="text/javascript"
+    src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+<script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+  }
+window.onload = function(){ initialize(); }
+</script>
 
-<% content_for :body_content_left do %>
-  <section>
-    <h1>Name</h1>
-    <p>
-      <%=raw @target.name %>
-    </p>
-  </section>
-  <section>
-    <h1>Title</h1>
-    <p>
-      <%=raw @target.title %>
-    </p>
-  </section>
-<% end %>
+<div class="target">
+  <table>
+    <tr>
+      <td style="width: 350px;">
+        <image src='/system/images/<%= @target.photo %>' alt="<%= @target.name %>">
+      </td>
+      <td valign="top">
+        <h1>
+          <%= @target.name %>
+        </h1>
+        <p>
+          <%= @target.description %>
+        </p>
+      </td>
+    </tr>
+  </table>
+  <div style="height:200px; margin: 0px 50px;" id="map_canvas"></div>
 
-<% content_for :body_content_right do %>
-  <aside>
-    <h2><%= t('.other') %></h2>
-    <ul id="targets">
-      <% @targets.each do |target| %>
-        <li>
-          <%= link_to target.name, target_path(target) %>
-        </li>
-      <% end %>
-    </ul>
-  </aside>
-<% end %>
+  <% content_for :body_content_title do %>
+    <%= @target.name %>
+  <% end %>
 
-<%= render :partial => "/shared/content_page" %>
+
+  <% content_for :body_content_left do %>
+    <section>
+      <h1>Name</h1>
+      <p>
+        <%= @target.name %>
+      </p>
+    </section>
+    <section>
+      <h1>Address</h1>
+      <p>
+        <%= @target.address %>
+      </p>
+    </section>
+  <% end %>
+
+  <% content_for :body_content_right do %>
+    <aside>
+      <h2><%= t('.other') %></h2>
+      <ul id="targets">
+        <% @targets.each do |target| %>
+          <li>
+            <%= link_to target.name, target_path(target) %>
+          </li>
+        <% end %>
+      </ul>
+    </aside>
+  <% end %>
+
+  <%= render :partial => "/shared/content_page" %>
+</div>
+

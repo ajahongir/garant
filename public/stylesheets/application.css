@@ -73,3 +73,10 @@ a {color: #006ba8}
   left: 0px;
 }
 
+.target table {width: 100%}
+.target table td {
+  text-align: center;
+  padding: 10px;
+}
+.target table td p {font-size: 14px;}
+

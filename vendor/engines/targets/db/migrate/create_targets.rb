@@ -3,7 +3,10 @@ class CreateTargets < ActiveRecord::Migration
   def self.up
     create_table :targets do |t|
       t.string :name
-      t.string :title
+      t.string :address
+      t.text :description
+      t.datetime :date_start
+      t.datetime :date_end
       t.integer :position
 
       t.timestamps
@@ -27,3 +30,4 @@ class CreateTargets < ActiveRecord::Migration
   end
 
 end
+

@@ -52,7 +52,7 @@
     position: absolute;
     top: 200px;
     right: 5px;
-    width: 32px;
+    width: 41px;
     height: 100px;
     cursor: pointer;
     background: transparent url(/images/roller_right_arrow.png) no-repeat 0 0;
@@ -85,7 +85,7 @@
     position: absolute;
     top: 200px;
     left: 5px;
-    width: 32px;
+    width: 41px;
     height: 100px;
     cursor: pointer;
     background: transparent url(prev-horizontal.png) no-repeat 0 0;

@@ -146,7 +146,12 @@ ActiveRecord::Schema.define(:version => 20110915171837) do
 
   create_table "targets", :force => true do |t|
     t.string   "name"
-    t.string   "title"
+    t.string   "photo"
+    t.string   "address"
+    t.text     "description"
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.integer  "floors"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
