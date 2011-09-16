@@ -3,3 +3,9 @@
 
 en:
   hello: "Hello world"
+ru:
+  plugins:
+    targets: "Объекты"
+    targets:
+      title: "Объекты"
+

@@ -1,3 +1,8 @@
+PATH
+  remote: vendor/engines
+  specs:
+    refinerycms-targets (1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -154,4 +159,5 @@ PLATFORMS
 DEPENDENCIES
   refinerycms (~> 1.0.8)
   refinerycms-i18n (~> 1.0.0)
+  refinerycms-targets (= 1.0)!
   sqlite3

@@ -9,7 +9,7 @@ end
 
 page_position = -1
 
-home_page = Page.create(:title => "Home",
+home_page = Page.create(:title => "Главная",
             :deletable => false,
             :link_url => "/",
             :position => (page_position += 1))
@@ -22,8 +22,8 @@ home_page.parts.create({
               :title => "Side Body",
               :body => "<p>This is another block of content over here.</p>",
               :position => 1
-            })
 
+            })
 home_page_position = -1
 page_not_found_page = home_page.children.create(:title => "Page not found",
             :menu_match => "^/404$",
@@ -36,16 +36,20 @@ page_not_found_page.parts.create({
               :position => 0
             })
 
-about_us_page = Page.create(:title => "About",
-            :deletable => true,
+about_us_page = Page.create(:title => "О компании",
+            :deletable => false,
             :position => (page_position += 1))
 about_us_page.parts.create({
-              :title => "Body",
-              :body => "<p>This is just a standard text page example. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin metus dolor, hendrerit sit amet, aliquet nec, posuere sed, purus. Nullam et velit iaculis odio sagittis placerat. Duis metus tellus, pellentesque ut, luctus id, egestas a, lorem. Praesent vitae mauris. Aliquam sed nulla. Sed id nunc vitae leo suscipit viverra. Proin at leo ut lacus consequat rhoncus. In hac habitasse platea dictumst. Nunc quis tortor sed libero hendrerit dapibus.\n\nInteger interdum purus id erat. Duis nec velit vitae dolor mattis euismod. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse pellentesque dignissim lacus. Nulla semper euismod arcu. Suspendisse egestas, erat a consectetur dapibus, felis orci cursus eros, et sollicitudin purus urna et metus. Integer eget est sed nunc euismod vestibulum. Integer nulla dui, tristique in, euismod et, interdum imperdiet, enim. Mauris at lectus. Sed egestas tortor nec mi.</p>",
+              :title => "О компании",
+              :body => "<div class='about'><table><tbody><tr><td><h1>О компании</h1><p>«Вершина успеха» - это 16-этажный жилой дом премиум-класса, образец респектабельности, функциональности и комфорта. Каждая из 105 квартир этого элитного дома гармонично сочетает в себе атмосферу домашнего уюта и в то же время самые современные технологии и отделочные материалы.<br/>Дом расположен в одном из самых респектабельных и экологически чистых районов Севастополя, в пяти минутах езды от центра города и в то же время окружен со всех сторон парковой зоной: в непосредственной близости от объекта находится Национальный музей-заповедник Херсонес Таврический, поэтому такое расположение можно назвать уникальным.</p></td><td><img src='/images/about_us_logo.png' /></td></tr></tbody></table></div>",
               :position => 0
             })
-about_us_page.parts.create({
-              :title => "Side Body",
-              :body => "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fringilla nisi a elit. Duis ultricies orci ut arcu. Ut ac nibh. Duis blandit rhoncus magna. Pellentesque semper risus ut magna. Etiam pulvinar tellus eget diam. Morbi blandit. Donec pulvinar mauris at ligula. Sed pellentesque, ipsum id congue molestie, lectus risus egestas pede, ac viverra diam lacus ac urna. Aenean elit.</p>",
-              :position => 1
-            })
+
+RefinerySetting.find_or_set(:site_name, "ГАРАНТИНВЕСТ")
+User.create({
+  :username => 'admin',
+  :email => "admin@gmail.com",
+  :password => "admin",
+  :password_confirmation => "admin"
+})
+

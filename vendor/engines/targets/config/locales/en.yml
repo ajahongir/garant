@@ -1,0 +1,25 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    targets:
+      title: Targets
+  admin:
+    targets:
+      actions:
+        create_new: Add New Target
+        reorder: Reorder Targets
+        reorder_done: Done Reordering Targets
+      records:
+        title: Targets
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Targets yet. Click "Add New Target" to add your first target.
+      target:
+        view_live_html: View this target live <br/><em>(opens in a new window)</em>
+        edit: Edit this target
+        delete: Remove this target forever
+  targets:
+    show:
+      other: Other Targets

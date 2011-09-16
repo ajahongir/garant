@@ -1,3 +1,5 @@
+body {font-family: Georgia,Arial;font-style: italic}
+
 /*#footer*/
 footer div {
   padding: 10px 25px;
@@ -5,9 +7,10 @@ footer div {
   background-color: transparent;
   background-image:url('/images/footer_bg.png');
   background-repeat: repeat-x;
-  font-family: Arial, Tahoma, Verdana;
+  font-family: Georgia,Arial;
   font-size: 11px;
   color: #FFFFFF;
+  font-weight: bold;
 }
 
 /*Header*/
@@ -28,7 +31,7 @@ header { padding-top: 50px; }
   padding: 5px 10px;
   text-decoration: none;
   color: #0080FF;
-  font-family: Arial, Tahoma, Verdana;
+  font-family: Georgia,Arial;
 }
 #menu ul li.selected a, #menu ul li a:hover {
 /*  background: #CCC;*/
@@ -37,6 +40,36 @@ header { padding-top: 50px; }
 /*#Varios*/
 .left {float:left;}
 .right {float:right;}
-hr {color: #BDBDBD;}
+hr {
+  background-color: #D4D4D4;
+  border: 0 none;
+  clear: both;
+  color: #D4D4D4;
+  height: 2px;
+}
 a {color: #006ba8}
+
+.about td {vertical-align: top}
+.about td p {font-size: 13px}
+.about td h1 {font-size: 36px}
+
+.home .blocks div {padding: 20px 0px}
+.home .blocks h1 {
+  font-family: Georgia,Arial;
+  font-style:	italic;
+  color: #FF8000;
+  font-weight: bold;
+}
+.home .blocks hr {
+  color: #D8D8D8
+}
+.home .jcarousel-skin-tango .jcarousel-prev-horizontal{
+  background: url("/images/roller_left_arrow.png") no-repeat scroll 0 0 transparent
+}
+.home .jcarousel-container .jcarousel-next-horizontal a{
+  background: url("/images/roller_right_arrow.png") no-repeat scroll 0 0 transparent
+}
+.home #prevBtn {
+  left: 0px;
+}
 

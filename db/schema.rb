@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110913181226) do
+ActiveRecord::Schema.define(:version => 20110915171837) do
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(:version => 20110913181226) do
   create_table "page_translations", :force => true do |t|
     t.integer  "page_id"
     t.string   "locale"
-    t.string   "custom_title"
     t.string   "title"
+    t.string   "custom_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,6 +143,16 @@ ActiveRecord::Schema.define(:version => 20110913181226) do
   add_index "slugs", ["locale"], :name => "index_slugs_on_locale"
   add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+
+  create_table "targets", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "targets", ["id"], :name => "index_targets_on_id"
 
   create_table "user_plugins", :force => true do |t|
     t.integer "user_id"

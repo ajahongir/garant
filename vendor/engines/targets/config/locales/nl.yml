@@ -1,0 +1,21 @@
+nl:
+  plugins:
+    targets:
+      title: Targets
+  admin:
+    targets:
+      actions:
+        create_new: Maak een nieuwe Target
+        reorder: Wijzig de volgorde van de Targets
+        reorder_done: Klaar met het wijzingen van de volgorde van de Targets
+      records:
+        title: Targets
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen Targets. Druk op 'Maak een nieuwe Target' om de eerste aan te maken.
+      target:
+        view_live_html: Bekijk deze target op de website <br/><em>(opent een nieuw venster)</em>
+        edit: Bewerk deze target
+        delete: Verwijder deze target voor eeuwig
+  targets:
+    show:
+      other: Andere Targets

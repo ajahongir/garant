@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    targets:
+      title: Targets
+  admin:
+    targets:
+      actions:
+        create_new: Lag en ny Target
+        reorder: Endre rekkefølgen på Targets
+        reorder_done: Ferdig å endre rekkefølgen Targets
+      records:
+        title: Targets
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Targets enda. Klikk på "Lag en ny Target" for å legge til din første target.
+      target:
+        view_live_html: Vis hvordan denne target ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne target
+        delete: Fjern denne target permanent
+  targets:
+    show:
+      other: Andre Targets

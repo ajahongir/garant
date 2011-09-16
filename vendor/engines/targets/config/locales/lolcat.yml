@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    targets:
+      title: Targets
+  admin:
+    targets:
+      actions:
+        create_new: CREATE NEW Target
+        reorder: REORDR Targets
+        reorder_done: DUN REORDERIN Targets
+      records:
+        title: Targets
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Targets YET. CLICK "CREATE NEW Target" 2 ADD UR FURST target.
+      target:
+        view_live_html: VIEW DIS target LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS target
+        delete: REMOOV DIS target FOREVR
+  targets:
+    show:
+      other: OTHR Targets
