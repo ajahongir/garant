@@ -54,7 +54,7 @@ a {color: #006ba8}
 .about td h1 {font-size: 36px}
 
 .home .blocks div {padding: 20px 0px}
-.home .blocks h1 {
+.home .blocks h1, .caption {
   font-family: Georgia,Arial;
   font-style:	italic;
   color: #FF8000;
@@ -79,4 +79,19 @@ a {color: #006ba8}
   padding: 10px;
 }
 .target table td p {font-size: 14px;}
+.target #body_content_left {
+  width: 350px;
+}
+.target #body_content_right {
+  width: 600px;
+  padding: 10px;
+}
+.target #body_content_left p {
+  font-size: 12px;
+  margin: 3px 0px;
+}
+.target #body_content_left h1 {
+  font-size: 16px;
+  margin: 5px 0px;
+}
 

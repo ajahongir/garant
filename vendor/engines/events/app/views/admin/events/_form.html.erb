@@ -1,17 +1,12 @@
-<%= form_for [:admin, @target] do |f| -%>
+<%= form_for [:admin, @event] do |f| -%>
   <%= render :partial => "/shared/admin/error_messages", :locals => {
-          :object => @target,
+          :object => @event,
           :include_object_name => true
         } %>
 
   <div class='field'>
     <%= f.label :name -%>
-    <%= f.text_field :name, :class => 'larger widest' -%>
-  </div>
-
-  <div class='field'>
-    <%= f.label :address -%>
-    <%= f.text_field :address, :class => 'larger widest' -%>
+    <%= f.text_field :name, :class => 'larger widest'  -%>
   </div>
 
   <div class='field'>
@@ -35,32 +30,23 @@
   </div>
 
   <div class='field'>
-    <%= f.label :photo -%>
-    <%= select(:target, :photo, Image.all.map{|i| [i.image_name, i.image_uid] }, :class => 'larger widest') -%>
+    <%= f.label :target -%>
+    <%= select(:event, :target_id, Target.all.map{|t| [t.name, t.id] }, :class => 'larger widest') -%>
   </div>
-
-  <div class='field'>
-    <%= f.label :date_start -%>
-    <%= select_date Date.today, :prefix => "target[date_start]", :class => 'larger widest' -%>
-  </div>
-
-  <div class='field'>
-    <%= f.label :date_end -%>
-    <%= select_date Date.tomorrow, :prefix => "target[date_end]", :class => 'larger widest' -%>
-  </div>
-
-  <div class='field'>
-    <%= f.label :floors -%>
-    <%= f.number_field :floors, :class => 'larger widest' -%>
-  </div>
-
 
   <%= render :partial => "/shared/admin/form_actions",
               :locals => {
                 :f => f,
                 :continue_editing => false,
-                :delete_title => t('delete', :scope => 'admin.targets.target'),
-                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @target.name)
+                :delete_title => t('delete', :scope => 'admin.events.event'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @event.name)
               } %>
 <% end -%>
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end %>
 

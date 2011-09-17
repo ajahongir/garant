@@ -1,19 +1,9 @@
-<script type="text/javascript"
-    src="http://maps.googleapis.com/maps/api/js?sensor=false">
-</script>
-<script type="text/javascript">
-  function initialize() {
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
-    var myOptions = {
-      zoom: 8,
-      center: latlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
-        myOptions);
-  }
-window.onload = function(){ initialize(); }
-</script>
+<script type="text/javascript" src="/javascripts/jcarousel/lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/javascripts/jcarousel/lib/jquery.jcarousel.js"></script>
+<script type="text/javascript" src="/javascripts/jcarousel/lib/jquery.jcarousel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/javascripts/jcarousel/skins/tango/small.css" />
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
 <div class="target">
   <table>
@@ -26,12 +16,19 @@ window.onload = function(){ initialize(); }
           <%= @target.name %>
         </h1>
         <p>
-          <%= @target.description %>
+          <%= raw @target.description %>
         </p>
       </td>
     </tr>
   </table>
-  <div style="height:200px; margin: 0px 50px;" id="map_canvas"></div>
+  <div style="height: 200px; margin: 0px 50px;" id="map_canvas"></div>
+  <br/>
+  <div class="progress">
+    <div>
+      <h1 class="caption">Стадия строительства</h1>
+    </div>
+    <div></div>
+  </div>
 
   <% content_for :body_content_title do %>
     <%= @target.name %>
@@ -39,22 +36,51 @@ window.onload = function(){ initialize(); }
 
 
   <% content_for :body_content_left do %>
-    <section>
-      <h1>Name</h1>
-      <p>
-        <%= @target.name %>
-      </p>
-    </section>
-    <section>
-      <h1>Address</h1>
-      <p>
-        <%= @target.address %>
-      </p>
-    </section>
+    <% @target.recent_events.each do |event| %>
+      <hr/>
+      <section>
+        <h1><%= event.name %></h1>
+        <p><%= event.created_at %></p>
+        <p>
+          <%= raw event.description %>
+        </p>
+      </section>
+    <% end %>
   <% end %>
 
   <% content_for :body_content_right do %>
     <aside>
+        <div style="heigth: 200px;">
+          <div>
+            <ul id="mycarousel" class="jcarousel-skin-tango" style="heigth: 200px;">
+              <li>
+                <img src="/images/building1.png" width="170px;" alt="" />
+                <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+              </li>
+              <li>
+                <img src="/images/building2.png" width="170px;" alt="" />
+                <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+              </li>
+              <li>
+                <img src="/images/building3.png" width="170px;" alt="" />
+                <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
+              </li>
+              <li>
+                <img src="/images/building1.png" width="170px;" alt="" />
+                <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+              </li>
+              <li>
+                <img src="/images/building3.png" width="170px;" alt="" />
+                <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+              </li>
+              <li>
+                <img src="/images/building2.png" width="170px;" alt="" />
+                <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
       <h2><%= t('.other') %></h2>
       <ul id="targets">
         <% @targets.each do |target| %>
@@ -65,7 +91,33 @@ window.onload = function(){ initialize(); }
       </ul>
     </aside>
   <% end %>
-
   <%= render :partial => "/shared/content_page" %>
+  <hr/>
 </div>
+
+<script type="text/javascript">
+  function initialize() {
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+  }
+window.onload = function(){
+  //initialize();
+}
+</script>
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+      jQuery('#mycarousel').jcarousel({
+          auto: 2,
+          wrap: 'circular',
+          animation: 4000
+      });
+  });
+</script>
 
