@@ -5,6 +5,30 @@
 
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 
+<link type="text/css" href="/javascripts/jquery-ui-1.7.3.custom/development-bundle/themes/base/ui.all.css" rel="stylesheet" />
+<script type="text/javascript" src="/javascripts/jquery-ui-1.7.3.custom/development-bundle/ui/ui.core.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-ui-1.7.3.custom/development-bundle/ui/ui.slider.js"></script>
+
+
+<meta charset="utf-8">
+	<style>
+	  #demo-frame > div.demo { padding: 10px !important; };
+	</style>
+	<script>
+	$(function() {
+		$( "#slider-range-min" ).slider({
+			range: "min",
+			value: 37,
+			min: 1,
+			max: 700,
+			slide: function( event, ui ) {
+				$( "#amount" ).val( "$" + ui.value );
+			}
+		});
+		//$( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
+	});
+	</script>
+
 <div class="target">
   <table>
     <tr>
@@ -24,10 +48,16 @@
   <div style="height: 200px; margin: 0px 50px;" id="map_canvas"></div>
   <br/>
   <div class="progress">
-    <div>
-      <h1 class="caption">Стадия строительства</h1>
-    </div>
-    <div></div>
+    <table>
+      <tr>
+        <td style="text-align: left; width: 350px;">
+          <h1 class="caption">Стадия строительства</h1>
+        </td>
+        <td style="width: 600px;">
+          <div id="slider-range-min"></div>
+        </td>
+      </tr>
+    </table>
   </div>
 
   <% content_for :body_content_title do %>
@@ -40,7 +70,7 @@
       <hr/>
       <section>
         <h1><%= event.name %></h1>
-        <p><%= event.created_at %></p>
+        <p><%= event.created_at.strftime("%d.%m.%Y") %></p>
         <p>
           <%= raw event.description %>
         </p>
@@ -54,27 +84,27 @@
           <div>
             <ul id="mycarousel" class="jcarousel-skin-tango" style="heigth: 200px;">
               <li>
-                <img src="/images/building1.png" width="170px;" alt="" />
+                <img src="/images/building1.png" width="162px;" height="162px;" alt="" />
                 <a href="#">г.Севастополь, ул. Ерошенко 9</a>
               </li>
               <li>
-                <img src="/images/building2.png" width="170px;" alt="" />
+                <img src="/images/building2.png" width="162px;" height="162px;" alt="" />
                 <a href="#">г.Севастополь, ул. Ерошенко 9</a>
               </li>
               <li>
-                <img src="/images/building3.png" width="170px;" alt="" />
+                <img src="/images/building3.png" width="162px;" height="162px;" alt="" />
                 <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
               </li>
               <li>
-                <img src="/images/building1.png" width="170px;" alt="" />
+                <img src="/images/building1.png" width="162px;" height="162px;" alt="" />
                 <a href="#">г.Севастополь, ул. Ерошенко 9</a>
               </li>
               <li>
-                <img src="/images/building3.png" width="170px;" alt="" />
+                <img src="/images/building3.png" width="162px;" height="162px;" alt="" />
                 <a href="#">г.Севастополь, ул. Ерошенко 9</a>
               </li>
               <li>
-                <img src="/images/building2.png" width="170px;" alt="" />
+                <img src="/images/building2.png" width="162px;" height="162px;" alt="" />
                 <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
               </li>
             </ul>
@@ -93,7 +123,36 @@
   <% end %>
   <%= render :partial => "/shared/content_page" %>
   <hr/>
+  <section>
+    <table>
+      <tr>
+        <td style="text-align: left;" valign="top">
+          <h1 class="caption">Планировки</h1>
+          <ul id="floors">
+            <% @target.floors.times do |i| %>
+              <li id="floor_<%= @target.floors - i %>" onclick="active_floor('floor_<%= @target.floors - i %>', <%= (@target.floors - i)%>); return false;">
+                <h1 class="caption"><%= link_to (@target.floors - i).to_s, "#" %></h1>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <image id="floor_image" src="/images/walls.png" style="width: 600px; height: 500px;">
+        </td>
+      </tr>
+    </table>
+  </section>
 </div>
+<script type="text/javascript">
+  var floor_images = {};
+  function active_floor(id, floor)
+  {
+    console.debug(id, floor);
+    jQuery('#floors li').attr("class", "");
+    jQuery('#floors #' + id).attr("class", "active");
+    jQuery('#floor_image').attr("src", floor_images[floor-1]);
+  }
+</script>
 
 <script type="text/javascript">
   function initialize() {
@@ -103,8 +162,7 @@
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
-        myOptions);
+    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   }
 window.onload = function(){
   //initialize();
@@ -113,11 +171,11 @@ window.onload = function(){
 
 <script type="text/javascript">
   jQuery(document).ready(function() {
-      jQuery('#mycarousel').jcarousel({
-          auto: 2,
-          wrap: 'circular',
-          animation: 4000
-      });
+    jQuery('#mycarousel').jcarousel({
+      auto: 2,
+      wrap: 'circular',
+        animation: 4000
+    });
   });
 </script>
 

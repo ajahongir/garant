@@ -54,9 +54,10 @@ a {color: #006ba8}
 .about td h1 {font-size: 36px}
 
 .home .blocks div {padding: 20px 0px}
-.home .blocks h1, .caption {
+.home .blocks h1, .caption, .caption a {
   font-family: Georgia,Arial;
   font-style:	italic;
+  font-size: 24px;
   color: #FF8000;
   font-weight: bold;
 }
@@ -93,5 +94,27 @@ a {color: #006ba8}
 .target #body_content_left h1 {
   font-size: 16px;
   margin: 5px 0px;
+}
+.left-side {
+  width: 350px;
+}
+.progress{width: 100%}
+
+#floors li {
+  background: url("/images/floor.png") no-repeat scroll 0 0 transparent;
+  list-style: none outside none;
+  padding-left: 10px;
+}
+#floors li.active {
+  background: url("/images/floor_active.png") no-repeat scroll 0 0 transparent;
+}
+#floors li h1 {
+  margin: 2px;
+}
+#mycarousel li {
+  background-color: #2F2F2F;
+}
+#mycarousel li img {
+  padding: 4px;
 }
 
