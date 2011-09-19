@@ -1,0 +1,28 @@
+<ul>
+  <% if Admin::TargetFloorsController.searchable? %>
+    <li>
+      <%= render :partial => "/shared/admin/search",
+                  :locals => {
+                    :url => admin_target_floors_path
+                  } %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), new_admin_target_floor_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? and Admin::TargetFloorsController.sortable? and TargetFloor.count > 1 %>
+  <li>
+    <%= link_to t('.reorder', :what => "Target Floors"),
+                 admin_target_floors_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Target Floors"),
+                 admin_target_floors_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

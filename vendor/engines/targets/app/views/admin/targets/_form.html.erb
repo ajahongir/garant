@@ -1,4 +1,4 @@
-<%= form_for [:admin, @target] do |f| -%>
+<%= form_for [:admin, @target], :html=> {:multipart=>true} do |f| -%>
   <%= render :partial => "/shared/admin/error_messages", :locals => {
           :object => @target,
           :include_object_name => true
@@ -49,12 +49,6 @@
     <%= select_date Date.tomorrow, :prefix => "target[date_end]", :class => 'larger widest' -%>
   </div>
 
-  <div class='field'>
-    <%= f.label :floors -%>
-    <%= f.number_field :floors, :class => 'larger widest' -%>
-  </div>
-
-
   <%= render :partial => "/shared/admin/form_actions",
               :locals => {
                 :f => f,
@@ -63,4 +57,6 @@
                 :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @target.name)
               } %>
 <% end -%>
+
+</script>
 

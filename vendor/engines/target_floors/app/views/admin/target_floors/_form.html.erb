@@ -1,0 +1,35 @@
+<%= form_for [:admin, @target_floor] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @target_floor,
+          :include_object_name => true
+        } %>
+
+  <div class='field'>
+    <%= f.label :target_id -%>
+    <%= select(:target_floor, :target_id, Target.all.map{|t| [t.name, t.id] }, :class => 'larger widest') -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :floor -%>
+    <%= f.text_field :floor  -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :data -%>
+    <%= f.text_field :data  -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :image_id -%>
+    <%= select(:target_floor, :image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest') -%>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'admin.target_floors.target_floor'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @target_floor.data)
+              } %>
+<% end -%>
+

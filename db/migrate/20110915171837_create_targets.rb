@@ -8,7 +8,6 @@ class CreateTargets < ActiveRecord::Migration
       t.text :description
       t.datetime :date_start
       t.datetime :date_end
-      t.integer :floors
       t.integer :position
 
       t.timestamps

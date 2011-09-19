@@ -1,0 +1,25 @@
+fr:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    target_floors:
+      title: Target Floors
+  admin:
+    target_floors:
+      actions:
+        create_new: Créer un(e) nouve(au/l/lle) Target Floor
+        reorder: Réordonner les Target Floors
+        reorder_done: Fin de réordonnancement des Target Floors
+      records:
+        title: Target Floors
+        sorry_no_results: "Désolé ! Aucun résultat."
+        no_items_yet: 'Il n''y a actuellement aucun(e) Target Floor. Cliquer sur "Créer un(e) nouve(au/l/lle) Target Floor" pour créer votre premi(er/ère) target floor.'
+      target_floor:
+        view_live_html: Voir ce(t/tte) target floor <br/><em>(Ouvre une nouvelle fenêtre)</em>
+        edit: Modifier ce(t/tte) target floor
+        delete: Supprimer définitivement ce(t/tte) target floor
+  target_floors:
+    show:
+      other: Autres Target Floors

@@ -1,0 +1,11 @@
+<% content_for :body_content_left do %>
+  <ul id="target_floors">
+    <% @target_floors.each do |target_floor| %>
+      <li>
+        <%= link_to target_floor.data, target_floor_path(target_floor) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

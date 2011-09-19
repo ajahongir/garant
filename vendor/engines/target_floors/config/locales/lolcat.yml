@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    target_floors:
+      title: Target Floors
+  admin:
+    target_floors:
+      actions:
+        create_new: CREATE NEW Target Floor
+        reorder: REORDR Target Floors
+        reorder_done: DUN REORDERIN Target Floors
+      records:
+        title: Target Floors
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Target Floors YET. CLICK "CREATE NEW Target Floor" 2 ADD UR FURST target floor.
+      target_floor:
+        view_live_html: VIEW DIS target floor LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS target floor
+        delete: REMOOV DIS target floor FOREVR
+  target_floors:
+    show:
+      other: OTHR Target Floors

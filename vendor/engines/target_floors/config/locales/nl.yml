@@ -1,0 +1,21 @@
+nl:
+  plugins:
+    target_floors:
+      title: Target Floors
+  admin:
+    target_floors:
+      actions:
+        create_new: Maak een nieuwe Target Floor
+        reorder: Wijzig de volgorde van de Target Floors
+        reorder_done: Klaar met het wijzingen van de volgorde van de Target Floors
+      records:
+        title: Target Floors
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen Target Floors. Druk op 'Maak een nieuwe Target Floor' om de eerste aan te maken.
+      target_floor:
+        view_live_html: Bekijk deze target floor op de website <br/><em>(opent een nieuw venster)</em>
+        edit: Bewerk deze target floor
+        delete: Verwijder deze target floor voor eeuwig
+  target_floors:
+    show:
+      other: Andere Target Floors

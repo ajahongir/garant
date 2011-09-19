@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    target_floors:
+      title: Target Floors
+  admin:
+    target_floors:
+      actions:
+        create_new: Lag en ny Target Floor
+        reorder: Endre rekkefølgen på Target Floors
+        reorder_done: Ferdig å endre rekkefølgen Target Floors
+      records:
+        title: Target Floors
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Target Floors enda. Klikk på "Lag en ny Target Floor" for å legge til din første target floor.
+      target_floor:
+        view_live_html: Vis hvordan denne target floor ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne target floor
+        delete: Fjern denne target floor permanent
+  target_floors:
+    show:
+      other: Andre Target Floors

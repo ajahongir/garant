@@ -2,6 +2,7 @@ PATH
   remote: vendor/engines
   specs:
     refinerycms-events (1.0)
+    refinerycms-target_floors (1.0)
     refinerycms-targets (1.0)
 
 GEM
@@ -161,5 +162,6 @@ DEPENDENCIES
   refinerycms (~> 1.0.8)
   refinerycms-events (= 1.0)!
   refinerycms-i18n (~> 1.0.0)
+  refinerycms-target_floors (= 1.0)!
   refinerycms-targets (= 1.0)!
   sqlite3

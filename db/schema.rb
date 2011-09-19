@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110917055546) do
+ActiveRecord::Schema.define(:version => 20110919183758) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(:version => 20110917055546) do
   create_table "page_translations", :force => true do |t|
     t.integer  "page_id"
     t.string   "locale"
-    t.string   "title"
     t.string   "custom_title"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -155,6 +155,18 @@ ActiveRecord::Schema.define(:version => 20110917055546) do
   add_index "slugs", ["name", "sluggable_type", "scope", "sequence"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
+  create_table "target_floors", :force => true do |t|
+    t.integer  "target_id"
+    t.integer  "floor"
+    t.string   "data"
+    t.integer  "image_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "target_floors", ["id"], :name => "index_target_floors_on_id"
+
   create_table "targets", :force => true do |t|
     t.string   "name"
     t.string   "photo"
@@ -162,7 +174,6 @@ ActiveRecord::Schema.define(:version => 20110917055546) do
     t.text     "description"
     t.datetime "date_start"
     t.datetime "date_end"
-    t.integer  "floors"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"

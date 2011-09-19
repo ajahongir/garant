@@ -129,29 +129,33 @@
         <td style="text-align: left;" valign="top">
           <h1 class="caption">Планировки</h1>
           <ul id="floors">
-            <% @target.floors.times do |i| %>
-              <li id="floor_<%= @target.floors - i %>" onclick="active_floor('floor_<%= @target.floors - i %>', <%= (@target.floors - i)%>); return false;">
-                <h1 class="caption"><%= link_to (@target.floors - i).to_s, "#" %></h1>
+            <% @target.target_floors.each do |f| %>
+              <li id="floor_<%= f.floor %>" onclick="active_floor('floor_<%= f.floor %>', <%= f.floor %>); return false;">
+                <h1 class="caption"><%= link_to f.floor, "#" %></h1>
               </li>
             <% end %>
+            <div></div>
           </ul>
         </td>
         <td>
-          <image id="floor_image" src="/images/walls.png" style="width: 600px; height: 500px;">
+          <image id="floor_image" src="" style="width: 600px; height: 500px;">
         </td>
       </tr>
     </table>
   </section>
 </div>
 <script type="text/javascript">
-  var floor_images = {};
+  var floor_images = { <%= @target.target_floors.map{|f| f.floor.to_s+":'/system/images/"+Image.find(f.image_id).image_uid+"'"}.join(", ") %> };
   function active_floor(id, floor)
   {
-    console.debug(id, floor);
+    console.debug(id, floor_images[floor-1]);
     jQuery('#floors li').attr("class", "");
     jQuery('#floors #' + id).attr("class", "active");
-    jQuery('#floor_image').attr("src", floor_images[floor-1]);
+    jQuery('#floor_image').attr("src", floor_images[floor]);
   }
+  <% unless @target.target_floors.blank? -%>
+    active_floor("floor_<%= @target.target_floors.first.floor %>" , <%= @target.target_floors.first.floor %>);
+  <% end -%>
 </script>
 
 <script type="text/javascript">
@@ -165,7 +169,7 @@
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   }
 window.onload = function(){
-  //initialize();
+  initialize();
 }
 </script>
 
@@ -174,7 +178,7 @@ window.onload = function(){
     jQuery('#mycarousel').jcarousel({
       auto: 2,
       wrap: 'circular',
-        animation: 4000
+        animation: 10000
     });
   });
 </script>

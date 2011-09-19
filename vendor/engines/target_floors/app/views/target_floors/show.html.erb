@@ -1,0 +1,45 @@
+<% content_for :body_content_title do %>
+  <%= @target_floor.data %>
+<% end %>
+
+<% content_for :body_content_left do %>
+  <section>
+    <h1>Target</h1>
+    <p>
+      <%=raw @target_floor.target_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Floor</h1>
+    <p>
+      <%=raw @target_floor.floor %>
+    </p>
+  </section>
+  <section>
+    <h1>Data</h1>
+    <p>
+      <%=raw @target_floor.data %>
+    </p>
+  </section>
+  <section>
+    <h1>Image</h1>
+    <p>
+      <%=raw @target_floor.image_id %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="target_floors">
+      <% @target_floors.each do |target_floor| %>
+        <li>
+          <%= link_to target_floor.data, target_floor_path(target_floor) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

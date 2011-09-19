@@ -1,5 +1,5 @@
 body {font-family: Georgia,Arial;font-style: italic}
-
+a {text-decoration: none}
 /*#footer*/
 footer div {
   padding: 10px 25px;
@@ -73,7 +73,6 @@ a {color: #006ba8}
 .home #prevBtn {
   left: 0px;
 }
-
 .target table {width: 100%}
 .target table td {
   text-align: center;
@@ -108,13 +107,16 @@ a {color: #006ba8}
 #floors li.active {
   background: url("/images/floor_active.png") no-repeat scroll 0 0 transparent;
 }
+#floors li.active a {
+  color: #FFF;
+}
 #floors li h1 {
   margin: 2px;
 }
-#mycarousel li {
-  background-color: #2F2F2F;
+#floors div {
+  background: url("/images/floor_shadow.png") no-repeat scroll 0 0 transparent;
+  height: 10px;
 }
-#mycarousel li img {
-  padding: 4px;
-}
+.target #mycarousel li { background-color: #2F2F2F;}
+.target #mycarousel li img { padding: 4px; }
 
