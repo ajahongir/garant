@@ -1,8 +1,14 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(target_floor) -%>">
   <span class='title'>
-    <%= target_floor.data %>
+    <%= target_floor.target.name %>
     <span class="preview">&nbsp;</span>
   </span>
+
+  <span class='title'>
+    <%= target_floor.floor %>
+    <span class="preview">&nbsp;</span>
+  </span>
+
   <span class='actions'>
     <%= link_to refinery_icon_tag("application_go.png"), target_floor_path(target_floor),
         :title => t('.view_live_html'),
@@ -16,3 +22,4 @@
         :method => :delete %>
   </span>
 </li>
+

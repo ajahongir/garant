@@ -1,5 +1,9 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(event) -%>">
   <span class='title'>
+    <%= event.target.name %>
+    <span class="preview">&nbsp;</span>
+  </span>
+  <span class='title'>
     <%= event.name %>
     <span class="preview">&nbsp;</span>
   </span>
@@ -16,3 +20,4 @@
         :method => :delete %>
   </span>
 </li>
+
