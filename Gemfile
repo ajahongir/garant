@@ -62,3 +62,4 @@ gem 'refinerycms-targets', '1.0', :path => 'vendor/engines'
 gem 'refinerycms-events', '1.0', :path => 'vendor/engines'
 gem 'refinerycms-target_floors', '1.0', :path => 'vendor/engines'
 gem 'refinerycms-event_images', '1.0', :path => 'vendor/engines'
+
