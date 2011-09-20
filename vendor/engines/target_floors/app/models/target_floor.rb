@@ -6,5 +6,7 @@ class TargetFloor < ActiveRecord::Base
   acts_as_indexed :fields => [:data]
 
   validates :data, :presence => true, :uniqueness => true
+  validates :target_id, :presence => true
+  validates :image_id, :presence => true
 end
 

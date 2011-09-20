@@ -10,7 +10,7 @@ ru:
       title: "Новости"
       name: "Названия"
     event_images:
-      title: "Картинки новостей"
+      title: "Изображении новостей"
       name: "Названия"
 
   admin:
@@ -30,17 +30,17 @@ ru:
         delete: "Удалить новость"
     event_images:
       actions:
-        create_new: "Добавить картинку"
-        reorder: "Изменить порядок картинок в меню"
-        reorder_done: "Изменен порядок картинок в меню"
+        create_new: "Добавить изображению"
+        reorder: "Изменить порядок изображении в меню"
+        reorder_done: "Изменен порядок изображении в меню"
       records:
-        title: "Картинки"
+        title: "Изображения"
         sorry_no_results: Sorry! There are no results found.
-        no_items_yet: "Еше картинок нет. Нажмите \"Добавить картинку\" для добавления."
+        no_items_yet: "Еше нет изображений. Нажмите \"Добавить изображению\" для добавления."
       event_image:
         view_live_html: "Просмотр картинки<br/><em>(в новой окне)</em>"
-        edit: "Изменить картинку"
-        delete: "Удалить картинку"
+        edit: "Изменить изображению"
+        delete: "Удалить изображению"
     target_floors:
       actions:
         create_new: "Добавить новый этаж"
@@ -63,5 +63,5 @@ ru:
       other: "Другие новости"
   event_images:
     show:
-      other: "Другие картинки"
+      other: "Другие изображении"
 
