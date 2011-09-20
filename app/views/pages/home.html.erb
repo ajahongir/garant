@@ -8,6 +8,13 @@
   <div style="heigth: 500px; width: 100%; position: relative;">
     <div>
       <ul id="mycarousel" class="jcarousel-skin-tango" style="heigth: 500px;">
+        <% Target.all.each do |target| %>
+          <li>
+            <img width="280px" height="350px" src="/system/images/<%= target.photo %>" alt="<%= target.name %>" />
+            <h1><%= target.name %></h1>
+            <a href="#"><%= target.address %></a>
+          </li>
+        <% end %>
         <li>
           <img src="/images/building1.png" alt="" />
           <h1>Жилой комплекс «Вершина успеха»</h1>

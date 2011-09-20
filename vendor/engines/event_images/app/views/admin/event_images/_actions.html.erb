@@ -1,0 +1,28 @@
+<ul>
+  <% if Admin::EventImagesController.searchable? %>
+    <li>
+      <%= render :partial => "/shared/admin/search",
+                  :locals => {
+                    :url => admin_event_images_path
+                  } %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), new_admin_event_image_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? and Admin::EventImagesController.sortable? and EventImage.count > 1 %>
+  <li>
+    <%= link_to t('.reorder', :what => "Event Images"),
+                 admin_event_images_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Event Images"),
+                 admin_event_images_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

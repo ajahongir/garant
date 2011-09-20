@@ -1,0 +1,25 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    event_images:
+      title: Event Images
+  admin:
+    event_images:
+      actions:
+        create_new: Add New Event Image
+        reorder: Reorder Event Images
+        reorder_done: Done Reordering Event Images
+      records:
+        title: Event Images
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Event Images yet. Click "Add New Event Image" to add your first event image.
+      event_image:
+        view_live_html: View this event image live <br/><em>(opens in a new window)</em>
+        edit: Edit this event image
+        delete: Remove this event image forever
+  event_images:
+    show:
+      other: Other Event Images

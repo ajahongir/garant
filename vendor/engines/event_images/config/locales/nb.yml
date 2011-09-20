@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    event_images:
+      title: Event Images
+  admin:
+    event_images:
+      actions:
+        create_new: Lag en ny Event Image
+        reorder: Endre rekkefølgen på Event Images
+        reorder_done: Ferdig å endre rekkefølgen Event Images
+      records:
+        title: Event Images
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Event Images enda. Klikk på "Lag en ny Event Image" for å legge til din første event image.
+      event_image:
+        view_live_html: Vis hvordan denne event image ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne event image
+        delete: Fjern denne event image permanent
+  event_images:
+    show:
+      other: Andre Event Images

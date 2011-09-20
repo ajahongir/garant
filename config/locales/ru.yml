@@ -3,4 +3,65 @@ ru:
     targets:
       title: "Объекты"
       name: "Названия"
+    target_floors:
+      title: "Этажи"
+      name: "Названия"
+    events:
+      title: "Новости"
+      name: "Названия"
+    event_images:
+      title: "Картинки новостей"
+      name: "Названия"
+
+  admin:
+    events:
+      actions:
+        create_new: "Добавить новость"
+        reorder: "Изменить порядок новостей в меню"
+        reorder_done: "Изменен порядок новостей в меню"
+      records:
+        title: "Этажи"
+        description: "Описания"
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: "Еше новостей нет. Нажмите \"Добавить новость\" для добавления."
+      event:
+        view_live_html: "Просмотр новость<br/><em>(в новой окне)</em>"
+        edit: "Изменить новость"
+        delete: "Удалить новость"
+    event_images:
+      actions:
+        create_new: "Добавить картинку"
+        reorder: "Изменить порядок картинок в меню"
+        reorder_done: "Изменен порядок картинок в меню"
+      records:
+        title: "Картинки"
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: "Еше картинок нет. Нажмите \"Добавить картинку\" для добавления."
+      event_image:
+        view_live_html: "Просмотр картинки<br/><em>(в новой окне)</em>"
+        edit: "Изменить картинку"
+        delete: "Удалить картинку"
+    target_floors:
+      actions:
+        create_new: "Добавить новый этаж"
+        reorder: "Изменить порядок объектов в меню"
+        reorder_done: "Изменен порядок объектов в меню"
+      records:
+        title: "Этажи"
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Targets yet. Click "Add New Target" to add your first target.
+      target_floor:
+        view_live_html: "Просмотр объекта<br/><em>(в новой окне)</em>"
+        edit: "Изменить этаж"
+        delete: "Удалить этаж"
+
+  target_floors:
+    show:
+      other: "Другие этажи"
+  events:
+    show:
+      other: "Другие новости"
+  event_images:
+    show:
+      other: "Другие картинки"
 

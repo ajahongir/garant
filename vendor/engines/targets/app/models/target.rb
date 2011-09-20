@@ -1,6 +1,7 @@
 class Target < ActiveRecord::Base
-  has_many :events
-  has_many :target_floors
+
+  has_many :events, :dependent => :destroy
+  has_many :target_floors, :dependent => :destroy
   has_many :images, :through => :target_floors
 
   acts_as_indexed :fields => [:name]

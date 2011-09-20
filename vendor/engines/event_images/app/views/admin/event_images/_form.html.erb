@@ -1,0 +1,30 @@
+<%= form_for [:admin, @event_image] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @event_image,
+          :include_object_name => true
+        } %>
+
+  <div class='field'>
+    <%= f.label :event_id -%>
+    <%= select :event_image, :event_id, Event.all.map{|e| [e.name, e.id] }, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :image_id -%>
+    <%= select :event_image, :image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :data -%>
+    <%= f.text_field :data  -%>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'admin.event_images.event_image'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @event_image.data)
+              } %>
+<% end -%>
+

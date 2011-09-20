@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    event_images:
+      title: Event Images
+  admin:
+    event_images:
+      actions:
+        create_new: CREATE NEW Event Image
+        reorder: REORDR Event Images
+        reorder_done: DUN REORDERIN Event Images
+      records:
+        title: Event Images
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Event Images YET. CLICK "CREATE NEW Event Image" 2 ADD UR FURST event image.
+      event_image:
+        view_live_html: VIEW DIS event image LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS event image
+        delete: REMOOV DIS event image FOREVR
+  event_images:
+    show:
+      other: OTHR Event Images

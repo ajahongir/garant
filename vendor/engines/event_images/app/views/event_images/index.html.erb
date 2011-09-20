@@ -1,0 +1,11 @@
+<% content_for :body_content_left do %>
+  <ul id="event_images">
+    <% @event_images.each do |event_image| %>
+      <li>
+        <%= link_to event_image.data, event_image_path(event_image) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

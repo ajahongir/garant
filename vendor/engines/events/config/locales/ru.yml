@@ -1,0 +1,26 @@
+ru:
+  shared:
+    admin:
+      image_picker:
+        image: "Картинка"
+  plugins:
+    events:
+      title: "Новости"
+  admin:
+    events:
+      actions:
+        create_new: "Добавить новость"
+        reorder: "Изменить порядок новостей в меню"
+        reorder_done: "Изменен порядок новостей в меню"
+      records:
+        title: "Этажи"
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: "Еше новостей нет. Нажмите \"Добавить новость\" для добавления."
+      event:
+        view_live_html: "Просмотр новость<br/><em>(в новой окне)</em>"
+        edit: "Изменить новость"
+        delete: "Удалить новость"
+  events:
+    show:
+      other: "Другие новости"
+

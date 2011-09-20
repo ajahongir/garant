@@ -83,6 +83,14 @@
         <div style="heigth: 200px;">
           <div>
             <ul id="mycarousel" class="jcarousel-skin-tango" style="heigth: 200px;">
+              <% @target.events.each do |event| %>
+                <% event.images.each do |image| %>
+                  <li>
+                    <img src="/system/images/<%= image.image_uid %>" width="162px;" height="162px;" alt="" />
+                    <a href="#"><%= event.name %></a>
+                  </li>
+                <% end %>
+              <% end %>
               <li>
                 <img src="/images/building1.png" width="162px;" height="162px;" alt="" />
                 <a href="#">г.Севастополь, ул. Ерошенко 9</a>
@@ -169,7 +177,7 @@
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   }
 window.onload = function(){
-  initialize();
+  //initialize();
 }
 </script>
 

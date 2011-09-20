@@ -1,0 +1,26 @@
+ru:
+  shared:
+    admin:
+      image_picker:
+        image: "Картинка"
+  plugins:
+    target_floors:
+      title: "Этажи"
+  admin:
+    target_floors:
+      actions:
+        create_new: "Добавить новый этаж"
+        reorder: "Изменить порядок объектов в меню"
+        reorder_done: "Изменен порядок объектов в меню"
+      records:
+        title: "Этажи"
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Targets yet. Click "Add New Target" to add your first target.
+      target_floor:
+        view_live_html: "Просмотр объекта<br/><em>(в новой окне)</em>"
+        edit: "Изменить этаж"
+        delete: "Удалить этаж"
+  target_floors:
+    show:
+      other: "Другие этажи"
+

@@ -1,0 +1,39 @@
+<% content_for :body_content_title do %>
+  <%= @event_image.data %>
+<% end %>
+
+<% content_for :body_content_left do %>
+  <section>
+    <h1>Event</h1>
+    <p>
+      <%=raw @event_image.event_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Image</h1>
+    <p>
+      <%=raw @event_image.image_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Data</h1>
+    <p>
+      <%=raw @event_image.data %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :body_content_right do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="event_images">
+      <% @event_images.each do |event_image| %>
+        <li>
+          <%= link_to event_image.data, event_image_path(event_image) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>

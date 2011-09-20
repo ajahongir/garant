@@ -1,6 +1,7 @@
 PATH
   remote: vendor/engines
   specs:
+    refinerycms-event_images (1.0)
     refinerycms-events (1.0)
     refinerycms-target_floors (1.0)
     refinerycms-targets (1.0)
@@ -160,6 +161,7 @@ PLATFORMS
 
 DEPENDENCIES
   refinerycms (~> 1.0.8)
+  refinerycms-event_images (= 1.0)!
   refinerycms-events (= 1.0)!
   refinerycms-i18n (~> 1.0.0)
   refinerycms-target_floors (= 1.0)!

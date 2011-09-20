@@ -1,5 +1,10 @@
 body {font-family: Georgia,Arial;font-style: italic}
 a {text-decoration: none}
+#page {
+  background-color: transparent;
+  background-image:url('/images/body_bg.png');
+  background-repeat: repeat;
+}
 /*#footer*/
 footer div {
   padding: 10px 25px;
@@ -99,6 +104,10 @@ a {color: #006ba8}
 }
 .progress{width: 100%}
 
+#floors{
+  margin-left: -10px;
+  padding-left: 0px;
+}
 #floors li {
   background: url("/images/floor.png") no-repeat scroll 0 0 transparent;
   list-style: none outside none;
@@ -114,8 +123,9 @@ a {color: #006ba8}
   margin: 2px;
 }
 #floors div {
-  background: url("/images/floor_shadow.png") no-repeat scroll 0 0 transparent;
+  background: url("/images/floor_shadow.png") no-repeat scroll -60px 0 transparent;
   height: 10px;
+  width: 143px;
 }
 .target #mycarousel li { background-color: #2F2F2F;}
 .target #mycarousel li img { padding: 4px; }
