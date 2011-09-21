@@ -100,11 +100,22 @@ a {color: #006ba8}
   font-size: 16px;
   margin: 5px 0px;
 }
-.left-side {
-  width: 350px;
+.target #news_tool {
+  width: 313px;
+  height: 435px;
+  position: absolute;
+  z-index: 99999;
+  background: url("/images/tooltip.png") no-repeat scroll 10px 0 transparent;
 }
-.progress{width: 100%}
-
+.target #news_tool_shadow {
+  width: 313px;
+  height: 455px;
+  position: absolute;
+  z-index: 1;
+  background: url("/images/tooltip_shadow.png") no-repeat scroll -46px 0 transparent;
+}
+.left-side { width: 350px; }
+.progress{ width: 100%; }
 #floors{
   margin-left: -10px;
   padding-left: 0px;
