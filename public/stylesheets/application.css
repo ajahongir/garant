@@ -20,15 +20,17 @@ footer div {
 
 /*Header*/
 header { padding-top: 50px; }
-.phone { font-size: 30px; }
-
+.phone {
+  font-size: 30px;
+  color: #636466;
+}
 /*#Menu*/
 #menu ul {
   list-style: none;
   padding: 0px;
 }
 #menu ul li {
-  margin-left: 20px;
+  margin-left: 15px;
   float: left;
 }
 #menu ul li a {
@@ -63,7 +65,7 @@ a {color: #006ba8}
   font-family: Georgia,Arial;
   font-style:	italic;
   font-size: 24px;
-  color: #FF8000;
+  color: #ED621F;
   font-weight: bold;
 }
 .home .blocks hr {
@@ -116,8 +118,29 @@ a {color: #006ba8}
 }
 .left-side { width: 350px; }
 .progress{ width: 100%; }
+#progressbar {
+  height: 17px;
+  position: relative;
+  background: url("/images/scroll_grey.png") repeat-x scroll 50% top #EEEEEE;
+}
+#progressbar #progresstext {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+}
+#progressbar p{
+  margin: 0px;
+  color: #FFFFFF;
+  font-weight: bold;
+}
+#progressbar .ui-widget-header{
+  background: url("/images/scroll_orange.png") repeat-x scroll 50% 50% #F6A828;
+}
 #floors{
   margin-left: -10px;
+  margin-top: 100px;
   padding-left: 0px;
 }
 #floors li {
@@ -135,9 +158,10 @@ a {color: #006ba8}
   margin: 2px;
 }
 #floors div {
-  background: url("/images/floor_shadow.png") no-repeat scroll -60px 0 transparent;
+  background: url("/images/floor_shadow.png") no-repeat scroll -50px 0 transparent;
   height: 10px;
   width: 143px;
+  margin-top: -10px;
 }
 .target #mycarousel li { background-color: #2F2F2F;}
 .target #mycarousel li img { padding: 4px; }

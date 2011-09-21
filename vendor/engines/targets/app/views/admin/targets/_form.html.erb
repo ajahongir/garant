@@ -41,12 +41,12 @@
 
   <div class='field'>
     <%= f.label :date_start -%>
-    <%= select_date Date.today, :prefix => "target[date_start]", :class => 'larger widest' -%>
+    <%= select_date @target.date_start, :prefix => "target[date_start]", :class => 'larger widest' -%>
   </div>
 
   <div class='field'>
     <%= f.label :date_end -%>
-    <%= select_date Date.tomorrow, :prefix => "target[date_end]", :class => 'larger widest' -%>
+    <%= select_date @target.date_end, :prefix => "target[date_end]", :class => 'larger widest' -%>
   </div>
 
   <%= render :partial => "/shared/admin/form_actions",
