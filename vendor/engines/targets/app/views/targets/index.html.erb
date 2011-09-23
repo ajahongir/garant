@@ -1,11 +1,84 @@
-<% content_for :body_content_left do %>
-  <ul id="targets">
-    <% @targets.each do |target| %>
-      <li>
-        <%= link_to target.name, target_path(target) %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<script type="text/javascript" src="/javascripts/jcarousel/lib/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/javascripts/jcarousel/lib/jquery.jcarousel.js"></script>
+<script type="text/javascript" src="/javascripts/jcarousel/lib/jquery.jcarousel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/javascripts/jcarousel/skins/tango/skin.css" />
+<% render :partial => "/shared/content_page" %>
+<div class="home">
 
-<%= render :partial => "/shared/content_page" %>
+  <div style="heigth: 500px; width: 100%; position: relative;">
+    <div>
+      <ul id="mycarousel" class="jcarousel-skin-tango" style="heigth: 500px;">
+        <% Target.all.each do |target| %>
+          <li>
+            <img width="260px" height="350px" src="/system/images/<%= target.photo %>" alt="<%= target.name %>" />
+            <h1><%= target.name %></h1>
+            <a href="<%= target_path target %>"><%= target.address %></a>
+          </li>
+        <% end %>
+        <li>
+          <img src="/images/building1.png" alt="" width="260px" height="350px" />
+          <h1>Жилой комплекс «Вершина успеха»</h1>
+          <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+        </li>
+        <li>
+          <img src="/images/building2.png" alt="" width="260px" height="350px" />
+          <h1>Жилой комплекс «Мария»</h1>
+          <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+        </li>
+        <li>
+          <img src="/images/building3.png" alt="" width="260px" height="350px" />
+          <h1>Жилой дом «Толстого, 16»</h1>
+          <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
+        </li>
+        <li>
+          <img src="/images/building1.png" alt="" width="260px" height="350px" />
+          <h1>Жилой комплекс «Вершина успеха»</h1>
+          <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+        </li>
+        <li>
+          <img src="/images/building3.png" alt="" width="260px" height="350px" />
+          <h1>Жилой комплекс «Мария»</h1>
+          <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+        </li>
+        <li>
+          <img src="/images/building2.png" alt="" width="260px" height="350px" />
+          <h1>Жилой дом «Толстого, 16»</h1>
+          <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr/ style="clear:both">
+  <div class="blocks">
+    <table style="padding: 20px 100px 20px 0px;">
+      <tr>
+        <td style="width: 230px; text-align: left; padding-right: 100px;"><h1>Недвижимость Крыма</h1></td>
+        <td style="width: 600px">Рынок недвижимости Крымского полуострова, на котором уже много лет успешно конкурирует «Интерстрой», имеет свою специфику по сравнению с другими регионами Украины.
+
+В первую очередь, это международный центр отдыха и рекреации, поэтому наибольший интерес для застройщиков имеет Южный берег. Здесь возводится жилье элитного класса, рассчитанное на самых взыскательных клиентов. Гостиницы, пансионаты, виллы и  апартаменты эксплуатируются, как правило, только в летний период. Поэтому данный вид недвижимости можно охарактеризовать как наиболее престижный, дорогостоящий и имеющий узкоцелевую направленность.</td>
+      </tr>
+    </table>
+  </div>
+
+  <hr/ style="clear:both">
+
+  <div class="blocks">
+    <table style="padding: 20px 100px 20px 0px;">
+      <tr>
+        <td style="width: 230px; text-align: left; padding-right: 100px;"><h1>О выгоде инвестирования в новостройки</h1></td>
+        <td style="width: 600px">Покупка недвижимости – это долгосрочная и надежная инвестиция капитала. Приобретение квартиры в новом доме принесёт ощутимую отдачу не только в краткосрочной перспективе (вложенные вами средства будут защищены от инфляции), но и сможет также приносить стабильный доход нескольким поколениям вашей семьи (если вы в будущем намереваетесь сдавать свою недвижимость в аренду).</td>
+      </tr>
+    </table>
+  </div>
+</div>
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+      jQuery('#mycarousel').jcarousel({
+          auto: 2,
+          wrap: 'circular',//last
+          animation: 8000
+      });
+  });
+</script>
+
