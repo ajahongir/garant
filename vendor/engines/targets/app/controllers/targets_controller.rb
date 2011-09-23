@@ -10,6 +10,7 @@ class TargetsController < ApplicationController
   end
 
   def show
+    @months = ['январь','февраль','март','апрель','май','июнь', 'июль', 'август', 'сентябрь','октябрь','ноябрь','декабрь']
     @target = Target.find(params[:id])
     days = ((@target.date_end - @target.date_start) / 86400).to_i
     took = ((Time.now - @target.date_start) / 86400).to_i

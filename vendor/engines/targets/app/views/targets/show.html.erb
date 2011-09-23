@@ -67,11 +67,11 @@
                   </div>
                 </div>
               <% end %>
-              <div class="left"><p style="font-size: 14px; font-weight: bold; margin-top: 20px; color: #5C5D5F;"><%= raw(Time.now.strftime("%B") +"</br>"+ Time.now.strftime("%Y")) %></p></div>
+              <div class="left"><p style="font-size: 14px; font-weight: bold; margin-top: 20px; color: #5C5D5F;"><%= raw(@months[Time.now.month] +"</br>"+ Time.now.strftime("%Y")) %></p></div>
             </div>
-            <div class="left"><p style="margin-top: 20px; color: #5C5D5F;"><%= raw(@target.date_start.strftime("%B") +"</br>"+ @target.date_start.strftime("%Y")) %></p></div>
+            <div class="left"><p style="margin-top: 20px; color: #5C5D5F;"><%= raw(@months[@target.date_start.month] +"</br>"+ @target.date_start.strftime("%Y")) %></p></div>
 
-            <div class="right"><p style="margin-top: 20px; color: #5C5D5F;"><%= raw (@target.date_end.strftime("%B") +"</br>"+ @target.date_end.strftime("%Y")) %></p></div>
+            <div class="right"><p style="margin-top: 20px; color: #5C5D5F;"><%= raw (@months[@target.date_end.month] +"</br>"+ @target.date_end.strftime("%Y")) %></p></div>
           </div>
         </td>
       </tr>
