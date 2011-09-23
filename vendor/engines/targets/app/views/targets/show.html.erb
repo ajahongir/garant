@@ -1,5 +1,4 @@
 <script type="text/javascript" src="/javascripts/jcarousel/lib/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="/javascripts/jcarousel/lib/jquery.jcarousel.js"></script>
 <script type="text/javascript" src="/javascripts/jcarousel/lib/jquery.jcarousel.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/javascripts/jcarousel/skins/tango/small.css" />
 
@@ -42,15 +41,37 @@
   <div class="progress">
     <table>
       <tr>
-        <td style="text-align: left; width: 350px;">
+        <td style="text-align: left; width: 200px;">
           <h1 class="caption">Стадия строительства</h1>
         </td>
-        <td style="width: 500px;" >
+        <td style="width: 450px;" >
           <div id="progressbar">
             <div id="progresstext"><p><%= @percent %>%</p></div>
-          </div>
-          <div id="news_tool_shadow">
-            <div id="news_tool"></div>
+            <div id="progressEvent">
+              <% @target.events.each do |event| %>
+                <div class="progress_event" style="width: <%= @event_percent %>%">
+                  <div class="news_tool_shadow">
+                    <div class="news_tool" style="padding: 80px 40px 420px 30px;">
+                      <div>
+                        <img src="/system/images/<%= event.images.first.image_uid %>" width="120px;" height="120px;">
+                        <img src="/system/images/<%= event.images.last.image_uid %>" width="120px;" height="120px;">
+                      </div>
+                      <div style="width: 300px;">
+                        <h1 class="caption"><%= event.name %></h1>
+                        <p><%= event.created_at.strftime("%d.%m.%Y") %></p>
+                        <p>
+                          <%= raw event.description %>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <div class="left"><p style="font-size: 14px; font-weight: bold; margin-top: 20px; color: #5C5D5F;"><%= raw(Time.now.strftime("%B") +"</br>"+ Time.now.strftime("%Y")) %></p></div>
+            </div>
+            <div class="left"><p style="margin-top: 20px; color: #5C5D5F;"><%= raw(@target.date_start.strftime("%B") +"</br>"+ @target.date_start.strftime("%Y")) %></p></div>
+
+            <div class="right"><p style="margin-top: 20px; color: #5C5D5F;"><%= raw (@target.date_end.strftime("%B") +"</br>"+ @target.date_end.strftime("%Y")) %></p></div>
           </div>
         </td>
       </tr>
@@ -115,15 +136,6 @@
             </ul>
           </div>
         </div>
-
-      <h2><%= t('.other') %></h2>
-      <ul id="targets">
-        <% @targets.each do |target| %>
-          <li>
-            <%= link_to target.name, target_path(target) %>
-          </li>
-        <% end %>
-      </ul>
     </aside>
   <% end %>
   <%= render :partial => "/shared/content_page" %>
@@ -131,7 +143,7 @@
   <section>
     <table>
       <tr>
-        <td style="text-align: left;" valign="top">
+        <td style="text-align: left; padding-left: 35px;" valign="top">
           <h1 class="caption">Планировки</h1>
           <ul id="floors">
             <% @target.target_floors.each do |f| %>
@@ -183,7 +195,7 @@ window.onload = function(){
     jQuery('#mycarousel').jcarousel({
       auto: 2,
       wrap: 'circular',
-        animation: 10000
+      animation: 10000
     });
   });
 
@@ -191,30 +203,26 @@ window.onload = function(){
 	  /* CONFIG */
 		  xOffset = -10;
 		  yOffset = 3;
-		  // these 2 variable determine popup's distance from the cursor
-		  // you might want to adjust to get the right result
 	  /* END CONFIG */
-	  $("#progressbar").hover(function(e){
-		  $("#news_tool_shadow")
+	  $(".progress_event").hover(function(e){
+		  $(".news_tool_shadow", e.target)
 			  .css("top",(e.pageY - xOffset) + "px")
 			  .css("left",(e.pageX + yOffset) + "px")
 			  .fadeIn("fast");
       },
-	  function(){
-		  $("#news_tool_shadow").hide();
+	  function(){console.log("fadeOut");
+		  $(".news_tool_shadow").fadeOut("fast");
     });
-	  //$("#progressbar").mousemove(function(e){
-	  //	$("#news_tool_shadow")
-	  //		.css("top",(e.pageY - xOffset) + "px")
-	  //		.css("left",(e.pageX + yOffset) + "px");
-	  //});
+	  $(".progress_event").mousemove(function(e){
+	  	$(".news_tool_shadow")
+	  		.css("top",(e.pageY - xOffset) + "px")
+	  		.css("left",(e.pageX + yOffset) + "px");
+	  });
   };
   // starting the script on page load
   $(document).ready(function(){
 	  tooltip();
-    function(){$("#news_tool_shadow").hide();}
+    $(".news_tool_shadow").hide();
   });
-
-
 </script>
 

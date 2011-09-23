@@ -9,7 +9,7 @@ end
 
 if defined?(Page)
   page = Page.create(
-    :title => 'Targets',
+    :title => 'Наши объекты',
     :link_url => '/targets',
     :deletable => false,
     :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
@@ -19,3 +19,4 @@ if defined?(Page)
     page.parts.create(:title => default_page_part, :body => nil)
   end
 end
+

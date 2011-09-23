@@ -19,18 +19,22 @@ footer div {
 }
 
 /*Header*/
-header { padding-top: 50px; }
+header { padding-top: 50px; padding-bottom: 15px;}
+header table {margin: 0px 40px;}
 .phone {
-  font-size: 30px;
-  color: #636466;
+  font-size: 32px;
+  font-weight: bold;
 }
 /*#Menu*/
+#menu {
+  margin-left: 40px;
+}
 #menu ul {
   list-style: none;
   padding: 0px;
 }
 #menu ul li {
-  margin-left: 15px;
+  margin-left: 1px;
   float: left;
 }
 #menu ul li a {
@@ -60,6 +64,7 @@ a {color: #006ba8}
 .about td p {font-size: 13px}
 .about td h1 {font-size: 36px}
 
+.home {padding: 0px 35px;}
 .home .blocks div {padding: 20px 0px}
 .home .blocks h1, .caption, .caption a {
   font-family: Georgia,Arial;
@@ -85,14 +90,15 @@ a {color: #006ba8}
   text-align: center;
   padding: 10px;
 }
-.target table td p {font-size: 14px;}
+.target table td p {font-size: 14px; }
+.target #body_content{ padding: 0px 35px;}
 .target #body_content_left {
-  width: 350px;
+  width: 250px;
   padding-left: 10px;
 }
 .target #body_content_right {
   width: 600px;
-  padding: 10px;
+  padding: 10px 30px 10px 10px;
 }
 .target #body_content_left p {
   font-size: 12px;
@@ -102,22 +108,51 @@ a {color: #006ba8}
   font-size: 16px;
   margin: 5px 0px;
 }
-.target #news_tool {
+.target .news_tool {
   width: 313px;
   height: 435px;
-  position: absolute;
-  z-index: 99999;
+/*  position: absolute;*/
+/*  z-index: 99999;*/
   background: url("/images/tooltip.png") no-repeat scroll 10px 0 transparent;
 }
-.target #news_tool_shadow {
-  width: 313px;
-  height: 455px;
-  position: absolute;
-  z-index: 1;
+.target .news_tool_shadow {
+  width: 333px;
+  height: 470px;
+ /* position: absolute;
+  z-index: 1;*/
   background: url("/images/tooltip_shadow.png") no-repeat scroll -46px 0 transparent;
 }
+#progressbar #progressEvent {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 99999;
+  text-align: center;
+  height: 17px;
+}
+#progressbar #progressEvent h1{
+  font-size: 14px;
+  color: #FDAA32
+}
+#progressbar #progressEvent p {
+  font-size: 12px;
+  color: #000000;
+  font-weight: normal;
+}
+#progressbar #progressEvent div{
+  float: left;
+  text-align: left;
+/*  height: 17px;*/
+}
+#progressbar #progressEvent .progress_event{
+  height: 17px;
+}
+.grey {color: #5C5D5F;}
 .left-side { width: 350px; }
-.progress{ width: 100%; }
+.progress{ width: 100%;}
+.progress table{ padding: 0px 35px;}
+.progress table td{ padding: 0px;}
 #progressbar {
   height: 17px;
   position: relative;
@@ -130,16 +165,16 @@ a {color: #006ba8}
   width: 100%;
   text-align: center;
 }
+
 #progressbar p{
   margin: 0px;
   color: #FFFFFF;
-  font-weight: bold;
 }
 #progressbar .ui-widget-header{
   background: url("/images/scroll_orange.png") repeat-x scroll 50% 50% #F6A828;
 }
 #floors{
-  margin-left: -10px;
+  margin-left: -35px;
   margin-top: 100px;
   padding-left: 0px;
 }
@@ -165,4 +200,7 @@ a {color: #006ba8}
 }
 .target #mycarousel li { background-color: #2F2F2F;}
 .target #mycarousel li img { padding: 4px; }
+#news_tool {text-align: left;}
+#news_tool p{margin: 0;}
+#news_tool h1{font-size: 16px;}
 
