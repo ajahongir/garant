@@ -28,6 +28,14 @@ ru:
         view_live_html: "Просмотр новость<br/><em>(в новой окне)</em>"
         edit: "Изменить новость"
         delete: "Удалить новость"
+      header:
+        name: "Названия объекта, новость"
+        actions: "Действии"
+      form:
+        name: "Названия"
+        description: "Описания"
+        target: "Объект"
+
     event_images:
       actions:
         create_new: "Добавить изображению"
@@ -41,6 +49,10 @@ ru:
         view_live_html: "Просмотр картинки<br/><em>(в новой окне)</em>"
         edit: "Изменить изображению"
         delete: "Удалить изображению"
+      header:
+        name: "Новость, изображения"
+        actions: "Действии"
+
     target_floors:
       actions:
         create_new: "Добавить новый этаж"
@@ -54,7 +66,14 @@ ru:
         view_live_html: "Просмотр объекта<br/><em>(в новой окне)</em>"
         edit: "Изменить этаж"
         delete: "Удалить этаж"
-
+      header:
+        name: "Названия объекта, этаж"
+        actions: "Действии"
+      form:
+        target: "Объект"
+        floor: "Этаж"
+        data: "Дополнительые данные"
+        image: "Изображения"
   target_floors:
     show:
       other: "Другие этажи"

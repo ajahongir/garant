@@ -5,7 +5,7 @@
         } %>
 
   <div class='field'>
-    <%= f.label :name -%>
+    <%= f.label t('.name') -%>
     <%= f.text_field :name, :class => 'larger widest'  -%>
   </div>
 
@@ -30,7 +30,7 @@
   </div>
 
   <div class='field'>
-    <%= f.label :target -%>
+    <%= f.label t(".target") -%>
     <%= select(:event, :target_id, Target.all.map{|t| [t.name, t.id] }, :class => 'larger widest') -%>
   </div>
 

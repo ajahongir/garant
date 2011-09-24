@@ -5,12 +5,12 @@
         } %>
 
   <div class='field'>
-    <%= f.label :name -%>
+    <%= f.label t(".name") -%>
     <%= f.text_field :name, :class => 'larger widest' -%>
   </div>
 
   <div class='field'>
-    <%= f.label :address -%>
+    <%= f.label t('.address') -%>
     <%= f.text_field :address, :class => 'larger widest' -%>
   </div>
 
@@ -35,17 +35,17 @@
   </div>
 
   <div class='field'>
-    <%= f.label :photo -%>
+    <%= f.label t('.photo') -%>
     <%= select(:target, :photo, Image.all.map{|i| [i.image_name, i.image_uid] }, :class => 'larger widest') -%>
   </div>
 
   <div class='field'>
-    <%= f.label :date_start -%>
+    <%= f.label t('.date_start') -%>
     <%= select_date @target.date_start, :prefix => "target[date_start]", :class => 'larger widest' -%>
   </div>
 
   <div class='field'>
-    <%= f.label :date_end -%>
+    <%= f.label t('.date_end') -%>
     <%= select_date @target.date_end, :prefix => "target[date_end]", :class => 'larger widest' -%>
   </div>
 

@@ -20,6 +20,15 @@ ru:
         view_live_html: "Просмотр объекта<br/><em>(в новой окне)</em>"
         edit: "Изменить объект"
         delete: "Удалить объект"
+      header:
+        actions: "Действии"
+        name: "Названия"
+      form:
+        address: "Адресс"
+        name: "Названия"
+        photo: "Изображения"
+        date_start: "Начало строительства"
+        date_end: "Завершения строительства"
   targets:
     show:
       other: "Другие объекты"

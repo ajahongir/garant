@@ -5,22 +5,22 @@
         } %>
 
   <div class='field'>
-    <%= f.label :target_id -%>
+    <%= f.label t('.target') -%>
     <%= select(:target_floor, :target_id, Target.all.map{|t| [t.name, t.id] }, :class => 'larger widest') -%>
   </div>
 
   <div class='field'>
-    <%= f.label :floor -%>
+    <%= f.label t('.floor') -%>
     <%= f.text_field :floor  -%>
   </div>
 
   <div class='field'>
-    <%= f.label :data -%>
+    <%= f.label t(".data") -%>
     <%= f.text_field :data  -%>
   </div>
 
   <div class='field'>
-    <%= f.label :image_id -%>
+    <%= f.label t(".image") -%>
     <%= select(:target_floor, :image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest') -%>
   </div>
 
