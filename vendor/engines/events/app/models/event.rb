@@ -6,7 +6,9 @@ class Event < ActiveRecord::Base
 
   acts_as_indexed :fields => [:name, :description]
 
-  validates :name, :presence => true, :uniqueness => true
+  validates_presence_of :name
+  validates_uniqueness_of :name, :scope => :target_id
+#  validates :name, :presence => true, :uniqueness => true
   validates :target_id, :presence => true
 
   def images

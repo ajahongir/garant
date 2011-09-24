@@ -60,7 +60,7 @@ hr {
 }
 a {color: #006ba8}
 
-.about td {vertical-align: top}
+.about td {padding-left: 35px; vertical-align: top}
 .about td p {font-size: 13px}
 .about td h1 {font-size: 36px}
 
@@ -94,7 +94,6 @@ a {color: #006ba8}
 .target #body_content{ padding: 0px 35px;}
 .target #body_content_left {
   width: 250px;
-  padding-left: 10px;
 }
 .target #body_content_right {
   width: 600px;
@@ -143,7 +142,6 @@ a {color: #006ba8}
 #progressbar #progressEvent div{
   float: left;
   text-align: left;
-/*  height: 17px;*/
 }
 #progressbar #progressEvent .progress_event{
   height: 17px;

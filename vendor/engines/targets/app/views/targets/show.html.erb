@@ -1,10 +1,9 @@
 <script type="text/javascript" src="/javascripts/jcarousel/lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/javascripts/jcarousel/lib/jquery.jcarousel.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/javascripts/jcarousel/skins/tango/small.css" />
+<link rel="stylesheet" type="text/css" href="/javascripts/jcarousel/skins/tango/small.css"/>
 
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
-<link type="text/css" href="/javascripts/jquery-ui-1.7.3.custom/development-bundle/themes/ui-lightness/ui.all.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/javascripts/jquery-ui-1.7.3.custom/development-bundle/themes/ui-lightness/ui.all.css"/>
 <script type="text/javascript" src="/javascripts/jquery-ui-1.7.3.custom/development-bundle/ui/ui.core.js"></script>
 <script type="text/javascript" src="/javascripts/jquery-ui-1.7.3.custom/development-bundle/ui/ui.progressbar.js"></script>
 
@@ -53,8 +52,9 @@
                   <div class="news_tool_shadow">
                     <div class="news_tool" style="padding: 80px 40px 420px 30px;">
                       <div>
-                        <img src="/system/images/<%= event.images.first.image_uid %>" width="120px;" height="120px;">
-                        <img src="/system/images/<%= event.images.last.image_uid %>" width="120px;" height="120px;">
+                        <% EventImage.find(:all, :conditions => {:event_id => event.id}, :limit => 2, :order => "created_at desc").each do |event_image| %>
+                          <img src="/system/images/<%= event_image.image.image_uid %>" width="135px;" height="120px;">
+                        <% end %>
                       </div>
                       <div style="width: 300px;">
                         <h1 class="caption"><%= event.name %></h1>
@@ -104,33 +104,33 @@
               <% @target.events.each do |event| %>
                 <% event.images.each do |image| %>
                   <li>
-                    <img src="/system/images/<%= image.image_uid %>" width="162px;" height="162px;" alt="" />
+                    <img src="/system/images/<%= image.image_uid %>" width="167px;" height="162px;" alt="" />
                     <a href="#"><%= event.name %></a>
                   </li>
                 <% end %>
               <% end %>
               <li>
-                <img src="/images/building1.png" width="162px;" height="162px;" alt="" />
+                <img src="/images/building1.png" width="167px;" height="162px;" alt="" />
                 <a href="#">г.Севастополь, ул. Ерошенко 9</a>
               </li>
               <li>
-                <img src="/images/building2.png" width="162px;" height="162px;" alt="" />
+                <img src="/images/building2.png" width="167px;" height="162px;" alt="" />
                 <a href="#">г.Севастополь, ул. Ерошенко 9</a>
               </li>
               <li>
-                <img src="/images/building3.png" width="162px;" height="162px;" alt="" />
+                <img src="/images/building3.png" width="167px;" height="162px;" alt="" />
                 <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
               </li>
               <li>
-                <img src="/images/building1.png" width="162px;" height="162px;" alt="" />
+                <img src="/images/building1.png" width="167px;" height="162px;" alt="" />
                 <a href="#">г.Севастополь, ул. Ерошенко 9</a>
               </li>
               <li>
-                <img src="/images/building3.png" width="162px;" height="162px;" alt="" />
+                <img src="/images/building3.png" width="167px;" height="162px;" alt="" />
                 <a href="#">г.Севастополь, ул. Ерошенко 9</a>
               </li>
               <li>
-                <img src="/images/building2.png" width="162px;" height="162px;" alt="" />
+                <img src="/images/building2.png" width="167px;" height="162px;" alt="" />
                 <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
               </li>
             </ul>
@@ -186,7 +186,7 @@
     var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   }
 window.onload = function(){
-  //initialize();
+  initialize();
 }
 </script>
 

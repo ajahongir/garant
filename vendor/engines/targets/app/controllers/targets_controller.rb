@@ -15,7 +15,7 @@ class TargetsController < ApplicationController
     days = ((@target.date_end - @target.date_start) / 86400).to_i
     took = ((Time.now - @target.date_start) / 86400).to_i
     @percent = days< took ? 100 : took*100/days
-    @event_percent = @percent/@target.events.count
+    @event_percent = (@target.events.count > 0 ? @percent/@target.events.count : 0)
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @target in the line below:
     present(@page)
