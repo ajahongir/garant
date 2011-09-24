@@ -1,0 +1,21 @@
+login: &login
+  adapter: mysql
+  host: localhost
+  username: root
+  password: root
+
+development: &development
+  database: garant_development
+  <<: *login
+
+test: &test
+  database: garant_test
+  <<: *login
+
+production: &production
+  adapter: mysql2
+  host: localhost
+  database: garant_production
+  username: root
+  password: root
+

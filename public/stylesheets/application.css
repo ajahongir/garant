@@ -51,6 +51,8 @@ header table {margin: 0px 40px;}
 /*#Varios*/
 .left {float:left;}
 .right {float:right;}
+.bold {font-weight: bold;}
+
 hr {
   background-color: #D4D4D4;
   border: 0 none;

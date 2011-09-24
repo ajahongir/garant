@@ -5,17 +5,17 @@
         } %>
 
   <div class='field'>
-    <%= f.label :event_id -%>
+    <%= f.label t('.event') -%>
     <%= select :event_image, :event_id, Event.all.map{|e| [e.name, e.id] }, :class => 'larger widest' -%>
   </div>
 
   <div class='field'>
-    <%= f.label :image_id -%>
+    <%= f.label t('.image') -%>
     <%= select :event_image, :image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest' -%>
   </div>
 
   <div class='field'>
-    <%= f.label :data -%>
+    <%= f.label t('.data') -%>
     <%= f.text_field :data  -%>
   </div>
 

@@ -19,6 +19,7 @@ module Refinery
         Refinery::Plugin.register do |plugin|
           plugin.name = "event_images"
           plugin.pathname = root
+          plugin.menu_match = /(admin|refinery)\/(events|event_images)$/
           plugin.activity = {
             :class => EventImage,
             :title => 'data'
@@ -28,3 +29,4 @@ module Refinery
     end
   end
 end
+

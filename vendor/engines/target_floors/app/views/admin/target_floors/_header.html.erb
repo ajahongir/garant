@@ -3,6 +3,12 @@
     <%= t(".name") %>
     <span class="preview">&nbsp;</span>
   </span>
+  <span>
+    <%= select :target, :id, Target.all.map{|t| [t.name, t.id] }.unshift(["Все", nil]), {},
+        {:onchange => "window.location.pathname= this.value ? '/refinery/targets/'+this.value+'/target_floors' : '#{admin_target_floors_path}'"} -%>
+    <span class="preview">&nbsp;</span>
+  </span>
+
   <span class='actions'>
     <%= t('.actions') %>&nbsp;&nbsp;&nbsp;&nbsp;
   </span>
