@@ -1,0 +1,12 @@
+<% content_for :body_content_left do %>
+  <ul id="flats">
+    <% @flats.each do |flat| %>
+      <li>
+        <%= link_to flat, flat_path(flat) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render :partial => "/shared/content_page" %>
+

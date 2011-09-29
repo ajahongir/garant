@@ -2,6 +2,7 @@ class TargetFloor < ActiveRecord::Base
 
   belongs_to :target
   belongs_to :image
+  has_many :flats, :dependent => :destroy
 
   acts_as_indexed :fields => [:data]
   validates_uniqueness_of :floor, :scope => :target_id

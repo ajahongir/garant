@@ -1,39 +1,35 @@
 <% content_for :body_content_title do %>
   <%= @event.name %>
 <% end %>
+<div class="events">
+  <% content_for :body_content_left do %>
+    <aside>
+      <h2> <%= link_to @event.target.name, target_path(@event.target) %></h2>
+      <p class="grey"><%= @event.target.address %></p>
+      <p><%= link_to "К общему плану", target_path(@event.target) %></p>
+    </aside>
+    <p><%= link_to "архив новостей", events_path, :style => "color: #666666" %></p>
+  <% end %>
 
-<% content_for :body_content_left do %>
-  <section>
-    <h1>Name</h1>
-    <p>
-      <%=raw @event.name %>
-    </p>
-  </section>
-  <section>
-    <h1>Description</h1>
-    <p>
-      <%=raw @event.description %>
-    </p>
-  </section>
-  <section>
-    <h1>Target</h1>
-    <p>
-      <%=raw @event.target_id %>
-    </p>
-  </section>
-<% end %>
+  <% content_for :body_content_right do %>
+    <section>
+      <h2 class="caption"><%=raw @event.name %></h2>
+      <p>
+        <%=raw @event.description %>
+      </p>
+      <ul style="width: 100%; min-height: 200px;">
+        <% @event.images.each do |image| %>
+          <li style="float: left; border: 1px solid #666666; margin: 2px;">
+            <div style="padding: 4px">
+              <img height="170px" width="200px" src="/system/images/<%= image.image_uid %>">
+            </div>
+          </li>
+        <% end %>
+      </ul>
 
-<% content_for :body_content_right do %>
-  <aside>
-    <h2><%= t('.other') %></h2>
-    <ul id="events">
-      <% @events.each do |event| %>
-        <li>
-          <%= link_to event.name, event_path(event) %>
-        </li>
-      <% end %>
-    </ul>
-  </aside>
-<% end %>
+    </section>
+  <% end %>
 
-<%= render :partial => "/shared/content_page" %>
+  <%= render :partial => "/shared/content_page" %>
+</div>
+

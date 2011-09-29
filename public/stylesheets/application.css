@@ -1,10 +1,12 @@
-body {font-family: Georgia,Arial;font-style: italic}
-a {text-decoration: none}
-#page {
+body {
+  font-family: Georgia,Arial;
+  font-style: italic;
   background-color: transparent;
-  background-image:url('/images/body_bg.png');
+  background-image: url('/images/body_bg.png');
   background-repeat: repeat;
 }
+footer {width: auto;}
+a {text-decoration: none}
 /*#footer*/
 footer div {
   padding: 10px 25px;
@@ -17,7 +19,7 @@ footer div {
   color: #FFFFFF;
   font-weight: bold;
 }
-
+#page {min-height: 700px;}
 /*Header*/
 header { padding-top: 50px; padding-bottom: 15px;}
 header table {margin: 0px 40px;}
@@ -203,4 +205,21 @@ a {color: #006ba8}
 #news_tool {text-align: left;}
 #news_tool p{margin: 0;}
 #news_tool h1{font-size: 16px;}
+
+
+.flats #body_content_left{
+  width: 300px;
+}
+.flats #body_content_right{
+  width: 700px;
+}
+
+.events #body_content_left{
+  width: 300px;
+}
+.events #body_content_right{
+  width: 700px;
+}
+.events ul { list-style-type: none; }
+.events ul {padding-left: 0px}
 

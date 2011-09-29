@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    flats:
+      title: Flats
+  admin:
+    flats:
+      actions:
+        create_new: CREATE NEW Flat
+        reorder: REORDR Flats
+        reorder_done: DUN REORDERIN Flats
+      records:
+        title: Flats
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Flats YET. CLICK "CREATE NEW Flat" 2 ADD UR FURST flat.
+      flat:
+        view_live_html: VIEW DIS flat LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS flat
+        delete: REMOOV DIS flat FOREVR
+  flats:
+    show:
+      other: OTHR Flats

@@ -1,11 +1,38 @@
-<% content_for :body_content_left do %>
-  <ul id="events">
-    <% @events.each do |event| %>
-      <li>
-        <%= link_to event.name, event_path(event) %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="events">
+  <% content_for :body_content_left do %>
+    <ul id="events">
+      <% Target.all.each do |target| %>
+        <li>
+          <%= link_to target.name, target_events_path(target) %>
+        </li>
+      <% end %>
+    </ul>
+    <p><%= link_to "архив новостей", events_path, :style => "color: #666666" %></p>
+  <% end %>
 
-<%= render :partial => "/shared/content_page" %>
+  <% content_for :body_content_right do %>
+    <ul id="events">
+      <% @events.each do |event| %>
+        <li>
+          <div>
+            <%= link_to event.name, event_path(event) %>
+          </div>
+          <div>
+            <%=raw event.description %>
+          </div>
+          <ul style="width: 100%; min-height: 200px;">
+            <% event.images.each do |image| %>
+              <li style="float: left; border: 1px solid #666666; margin: 2px; list-style-type: none;">
+                <div style="padding: 4px">
+                  <img height="170px" width="200px" src="/system/images/<%= image.image_uid %>">
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= render :partial => "/shared/content_page" %>
+</div>
+

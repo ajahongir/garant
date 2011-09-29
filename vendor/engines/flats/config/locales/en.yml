@@ -1,0 +1,25 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    flats:
+      title: Flats
+  admin:
+    flats:
+      actions:
+        create_new: Add New Flat
+        reorder: Reorder Flats
+        reorder_done: Done Reordering Flats
+      records:
+        title: Flats
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Flats yet. Click "Add New Flat" to add your first flat.
+      flat:
+        view_live_html: View this flat live <br/><em>(opens in a new window)</em>
+        edit: Edit this flat
+        delete: Remove this flat forever
+  flats:
+    show:
+      other: Other Flats

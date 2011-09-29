@@ -1,0 +1,23 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(flat) -%>">
+  <span class='title'>
+    <%= flat.target_floor.target_id %>
+    <span class="preview">&nbsp;</span>
+  </span>
+  <span class='title'>
+    <%= flat.sold ? "Продано" : "Не продано" %>
+    <span class="preview">&nbsp;</span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag("application_go.png"), flat_path(flat),
+        :title => t('.view_live_html'),
+        :target => "_blank" %>
+    <%= link_to refinery_icon_tag("application_edit.png"), edit_admin_flat_path(flat),
+         :title => t('.edit') %>
+    <%= link_to refinery_icon_tag("delete.png"), admin_flat_path(flat),
+        :class => "cancel confirm-delete",
+        :title => t('.delete'),
+        :confirm => t('message', :scope => 'shared.admin.delete', :title => flat.title),
+        :method => :delete %>
+  </span>
+</li>
+

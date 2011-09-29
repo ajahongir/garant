@@ -20,7 +20,8 @@ class EventsController < ApplicationController
 protected
 
   def find_all_events
-    @events = Event.order('position ASC')
+    @events = Event.order('position desc') unless params[:target_id]
+    @events = Event.where(:target_id => params[:target_id]).order('position desc') if params[:target_id]
   end
 
   def find_page
@@ -28,3 +29,4 @@ protected
   end
 
 end
+

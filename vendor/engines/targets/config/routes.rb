@@ -1,5 +1,8 @@
 ::Refinery::Application.routes.draw do
-  resources :targets, :only => [:index, :show]
+  resources :targets, :only => [:index, :show] do
+    resources :events, :only => [:index, :show] do
+    end
+  end
 
   scope(:path => 'refinery', :as => 'admin', :module => 'admin') do
     resources :targets, :except => :show do

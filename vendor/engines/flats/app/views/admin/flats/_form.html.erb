@@ -1,0 +1,45 @@
+<%= form_for [:admin, @flat] do |f| -%>
+  <%= render :partial => "/shared/admin/error_messages", :locals => {
+          :object => @flat,
+          :include_object_name => true
+        } %>
+
+  <div class='field'>
+    <%= f.label t('.target_floor') -%>
+    <%= select(:flat, :target_floor_id, TargetFloor.all.map{|t| [t.floor, t.id] }, :class => 'larger widest') -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label t('.price') -%>
+    <%= f.text_field :price  -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label t('.image') -%>
+    <%= select(:flat, :image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest') -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label t('.area_live') -%>
+    <%= f.text_field :area_live  -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label t('.area') -%>
+    <%= f.text_field :area  -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label t('.sold') -%>
+    <%= select(:flat, :sold,  [["Не продано", 0], ["Продано", 1]], :class => 'larger widest') -%>
+  </div>
+
+  <%= render :partial => "/shared/admin/form_actions",
+              :locals => {
+                :f => f,
+                :continue_editing => false,
+                :delete_title => t('delete', :scope => 'admin.flats.flat'),
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete')
+              } %>
+<% end -%>
+

@@ -1,0 +1,28 @@
+<ul>
+  <% if Admin::FlatsController.searchable? %>
+    <li>
+      <%= render :partial => "/shared/admin/search",
+                  :locals => {
+                    :url => admin_flats_path
+                  } %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), new_admin_flat_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? and Admin::FlatsController.sortable? and Flat.count > 1 %>
+  <li>
+    <%= link_to t('.reorder', :what => "Flats"),
+                 admin_flats_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Flats"),
+                 admin_flats_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

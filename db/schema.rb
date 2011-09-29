@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110920150630) do
+ActiveRecord::Schema.define(:version => 20110926171528) do
 
   create_table "event_images", :force => true do |t|
     t.integer  "event_id"
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(:version => 20110920150630) do
   end
 
   add_index "events", ["id"], :name => "index_events_on_id"
+
+  create_table "flats", :force => true do |t|
+    t.integer  "price"
+    t.integer  "image_id"
+    t.integer  "area_live"
+    t.integer  "target_floor_id"
+    t.integer  "area"
+    t.boolean  "sold",            :default => false
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "flats", ["id"], :name => "index_flats_on_id"
 
   create_table "images", :force => true do |t|
     t.string   "image_mime_type"
@@ -71,8 +85,8 @@ ActiveRecord::Schema.define(:version => 20110920150630) do
   create_table "page_translations", :force => true do |t|
     t.integer  "page_id"
     t.string   "locale"
-    t.string   "custom_title"
     t.string   "title"
+    t.string   "custom_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

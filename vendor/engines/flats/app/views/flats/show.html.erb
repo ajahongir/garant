@@ -1,0 +1,61 @@
+<% content_for :body_content_title do %>
+  <%= @flat.title %>
+<% end %>
+<div class="flats">
+  <% content_for :body_content_left do %>
+    <aside>
+      <h2> <%= link_to Target.find(@flat.target_floor.target_id).name, target_path(@flat.target_floor.target_id) %></h2>
+      <p class="grey"><%= Target.find(@flat.target_floor.target_id).address %></p>
+      <p><%= link_to "К общему плану", target_path(@flat.target_floor.target_id) %></p>
+    </aside>
+  <% end %>
+
+  <% content_for :body_content_right do %>
+    <section style="float: left; padding-right: 100px;">
+      <p>
+        <img width="260px" height="260px" src="/system/images/<%= @flat.image.image_uid %>">
+      </p>
+    </section>
+    <section style="float: left;">
+      <h2 class="caption">Квартира</h2>
+      <div>
+        <h1>Общий метраж:</h1>
+        <p class="grey">
+          <span><%=raw @flat.area %>&nbsp;м<sup>2</sup></span>
+        </p>
+      </div>
+      <div>
+        <h1>Жилой метраж: </h1>
+        <p class="grey">
+          <span><%=raw @flat.area_live %>&nbsp;м<sup>2</sup></span>
+        </p>
+      </div>
+      <div>
+        <h1>Стоимость квадратного метра: </h1>
+        <p class="grey">
+          <span><%=raw @flat.price %></span>
+        </p>
+      </div>
+      <div>
+        <h1>Стоимость помещения: </h1>
+        <p class="grey">
+          <span>≈ <%=raw @flat.price * @flat.area %> руб.</span>
+        </p>
+      </div>
+      <div>
+        <h1>Отдел продаж: </h1>
+        <p class="grey">
+          <span>+38(0692) 45-11-11</span>
+        </p>
+        <p class="grey">
+          <span>+38(099) 900-900-2</span>
+        </p>
+        <a href="mailto:&gt;info@interstroi.com.ua">info@interstroi.com.ua</a>
+      </div>
+
+    </section>
+  <% end %>
+
+  <%= render :partial => "/shared/content_page" %>
+</div>
+

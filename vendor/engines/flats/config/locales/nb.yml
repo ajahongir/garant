@@ -1,0 +1,21 @@
+nb:
+  plugins:
+    flats:
+      title: Flats
+  admin:
+    flats:
+      actions:
+        create_new: Lag en ny Flat
+        reorder: Endre rekkefølgen på Flats
+        reorder_done: Ferdig å endre rekkefølgen Flats
+      records:
+        title: Flats
+        sorry_no_results: Beklager! Vi fant ikke noen resultater.
+        no_items_yet: Det er ingen Flats enda. Klikk på "Lag en ny Flat" for å legge til din første flat.
+      flat:
+        view_live_html: Vis hvordan denne flat ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+        edit: Rediger denne flat
+        delete: Fjern denne flat permanent
+  flats:
+    show:
+      other: Andre Flats

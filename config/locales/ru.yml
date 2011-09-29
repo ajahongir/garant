@@ -12,6 +12,8 @@ ru:
     event_images:
       title: "Изображении новостей"
       name: "Названия"
+    flats:
+      title: "Квартиры"
 
   admin:
     events:
@@ -78,6 +80,29 @@ ru:
         floor: "Этаж"
         data: "Дополнительые данные"
         image: "Изображения"
+    flats:
+      actions:
+        create_new: "Добавить квартиру"
+        reorder: "Изменить порядок квартир в меню"
+        reorder_done: "Изменен порядок квартир в меню"
+      records:
+        title: "Квартиры"
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: "Еше новостей нет. Нажмите \"Добавить новость\" для добавления."
+      event:
+        view_live_html: "Просмотр новость<br/><em>(в новой окне)</em>"
+        edit: "Изменить квартиру"
+        delete: "Удалить квартиру"
+      header:
+        name: "Объект: "
+        actions: "Действии"
+      form:
+        price: "Цена"
+        image: "Изображения"
+        area: "Общий метраж"
+        area_live: "Жилой метраж"
+        sold: "Продано"
+        target_floor: "Этаж"
   target_floors:
     show:
       other: "Другие этажи"
