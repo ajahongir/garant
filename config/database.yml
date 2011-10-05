@@ -18,4 +18,3 @@ production: &production
   database: garant_production
   username: root
   password: root
-

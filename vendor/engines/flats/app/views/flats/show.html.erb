@@ -13,13 +13,13 @@
   <% content_for :body_content_right do %>
     <section style="float: left; padding-right: 100px;">
       <p>
-        <img width="260px" height="260px" src="/system/images/<%= @flat.image.image_uid %>">
+        <img width="260px" height="260px" src="/system/images/<%= @flat.image.image_uid if @flat.image %>">
       </p>
     </section>
     <section style="float: left;">
       <h2 class="caption">Квартира</h2>
       <div>
-        <h1>Общий метраж:</h1>
+        <h1>Общий метраж:</h1>image_uid
         <p class="grey">
           <span><%=raw @flat.area %>&nbsp;м<sup>2</sup></span>
         </p>

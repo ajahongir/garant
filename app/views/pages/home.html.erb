@@ -10,7 +10,7 @@
       <ul id="mycarousel" class="jcarousel-skin-tango" style="heigth: 500px;">
         <% Target.all.each do |target| %>
           <li>
-            <img width="260px" height="300px" src="/system/images/<%= target.photo %>" alt="<%= target.name %>" />
+            <img width="260px" height="300px" src="/system/images/<%= target.image.image_uid %>" alt="<%= target.name %>" />
             <h1><%= target.name %></h1>
             <a href="<%= target_path target %>"><%= target.address %></a>
           </li>

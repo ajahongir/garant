@@ -2,14 +2,20 @@ class CreateFlats < ActiveRecord::Migration
 
   def self.up
     create_table :flats do |t|
-      t.integer :price
+      t.integer :price, :default => 0
       t.integer :image_id
-      t.integer :area_live
+      t.integer :area_live, :default => 0
       t.integer :target_floor_id
-      t.integer :area
+      t.integer :area, :default => 0
       t.boolean :sold, :default => 0
       t.integer :position
 
+			t.string :img_alt 
+			t.string :img_coords
+			t.string :img_target
+			t.string :img_id
+			t.string :img_shape
+			t.string :img_href
       t.timestamps
     end
 

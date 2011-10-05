@@ -41,7 +41,7 @@
 
   <div class='field'>
     <%= f.label t('.photo') -%>
-    <%= select(:target, :photo, Image.all.map{|i| [i.image_name, i.image_uid] }, :class => 'larger widest') -%>
+    <%= select(:target, :image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest') -%>
   </div>
 
   <div class='field'>
@@ -62,6 +62,3 @@
                 :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @target.name)
               } %>
 <% end -%>
-
-</script>
-

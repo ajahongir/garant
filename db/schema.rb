@@ -35,13 +35,19 @@ ActiveRecord::Schema.define(:version => 20110926171528) do
   add_index "events", ["id"], :name => "index_events_on_id"
 
   create_table "flats", :force => true do |t|
-    t.integer  "price"
+    t.integer  "price",           :default => 0
     t.integer  "image_id"
-    t.integer  "area_live"
+    t.integer  "area_live",       :default => 0
     t.integer  "target_floor_id"
-    t.integer  "area"
+    t.integer  "area",            :default => 0
     t.boolean  "sold",            :default => false
     t.integer  "position"
+    t.string   "img_alt"
+    t.string   "img_coords"
+    t.string   "img_target"
+    t.string   "img_id"
+    t.string   "img_shape"
+    t.string   "img_href"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -85,8 +91,8 @@ ActiveRecord::Schema.define(:version => 20110926171528) do
   create_table "page_translations", :force => true do |t|
     t.integer  "page_id"
     t.string   "locale"
-    t.string   "title"
     t.string   "custom_title"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -194,12 +200,13 @@ ActiveRecord::Schema.define(:version => 20110926171528) do
 
   create_table "targets", :force => true do |t|
     t.string   "name"
-    t.string   "photo"
+    t.integer  "image_id"
     t.string   "address"
     t.text     "description"
     t.datetime "date_start"
     t.datetime "date_end"
     t.integer  "position"
+    t.string   "localition"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -23,7 +23,7 @@
   <table>
     <tr>
       <td style="padding-left: 35px;width: 400px;">
-        <img width="400px" height="350px" src='/system/images/<%= @target.photo %>' alt="<%= @target.name %>">
+        <img width="400px" height="350px" src='/system/images/<%= @target.image.image_uid %>' alt="<%= @target.name %>">
       </td>
       <td valign="top" style="padding-right: 35px;">
         <h1>
@@ -34,10 +34,15 @@
         </p>
       </td>
     </tr>
+		<tr>
+			<td colspan="2">
+			  <div style="height: 200px; margin: 0px 50px;" id="map_canvas">
+			    <a href="<%= @target[:localition] %>"><img src="<%= @target.localition %>"></a>
+			  </div>
+			</td>
+			<td></td>
+		</tr>
   </table>
-  <div style="height: 200px; margin: 0px 50px;" id="map_canvas">
-    <img src="<%= @target[:localition] %>">
-  </div>
   <br/>
   <div class="progress">
     <table>
@@ -149,35 +154,61 @@
           <h1 class="caption">Планировки</h1>
           <ul id="floors">
             <% @target.target_floors.each do |f| %>
-              <li id="floor_<%= f.floor %>" onclick="active_floor('floor_<%= f.floor %>', <%= f.floor %>); return false;">
+              <li id="floor_<%= f.floor %>" onclick="active_floor('floor_<%= f.floor %>', <%= f.id %>); return false;">
                 <h1 class="caption"><%= link_to f.floor, "#" %></h1>
               </li>
             <% end %>
             <div></div>
           </ul>
         </td>
-        <td>
-          <image id="floor_image" onclick="flat_show(this);" src="" style="width: 600px; height: 500px;">
+        <td style="text-align: left;">
+          <% @target.target_floors.each do |tf| %>
+						<div id="pic_container_<%= tf.id %>" class="pic_container" style="-moz-user-select: none; position: relative;">
+							<img src="/system/images/<%= tf.image.image_uid %>" usemap="#mapname_<%= tf.id %>">
+	            <% tf.flats.each do |f| %>
+								<% if f.img_shape == "rect" %>
+									<canvas id="<%= f.id %>" style="position: absolute; top: <%= f.location[:top] %>px; left: <%= f.location[:left] %>px; background-color: rgb(255, 255, 255); opacity: 0.5; width: <%= f.location[:width] %>px; height: <%= f.location[:height] %>px; border-width: 1px; border-style: solid; border-color: rgb(221, 0, 0); cursor: pointer;" width="<%= f.location[:width] %>" height="<%= f.location[:height] %>" title="<%= f.img_alt %>"></canvas>
+									<div class="imgmap_label" style="font: bold 10px Arial; position: absolute; top: 361px; left: 167px;"><%= f.img_alt %></div>
+		            <% end %>							
+	            <% end %>				
+	
+							<map id="mapname_<%= tf.id %>" name="mapname_<%= tf.id %>">
+		            <% tf.flats.each do |f| %>
+									<area style="border: 1px solid red;" shape="<%= f.img_shape %>" alt="<%= f.img_alt %>" title="<%= f.img_alt %>" onMouseOver="flat_over(this);" onMouseOver="flat_out(this);" coords="<%= f.img_coords %>" href="<%= target_floor_flat_path(tf, f) %>" target="<%= f.img_target %>" />
+		            <% end %>							
+							</map>          
+						</div>
+          <% end %>							
         </td>
       </tr>
     </table>
   </section>
 </div>
 <script type="text/javascript">
-  var floor_images = { <%= @target.target_floors.map{|f| f.floor.to_s+":'/system/images/"+Image.find(f.image_id).image_uid+"'"}.join(", ") %> };
+	function flat_over(e){
+		$(e.target).addClass("one");
+		console.log(e.target);
+	}
+
+	function flat_out(e){
+		$(e.target).removeClass("one");
+		console.log(e.target);
+	}
+
   function active_floor(id, floor)
   {
-    console.debug(id, floor_images[floor-1]);
-    jQuery('#floors li').attr("class", "");
-    jQuery('#floors #' + id).attr("class", "active");
-    jQuery('#floor_image').attr("src", floor_images[floor]);
+    console.debug(id, floor);
+    $('#floors li').attr("class", "");
+    $('#floors #' + id).attr("class", "active");
+    $('.pic_container').hide();
+    $('#pic_container_'+ floor).show();
   }
   function flat_show(image)
   {
     window.location = "<%= flat_path(@target.target_floors.last.flats.last) %>";
   }
   <% unless @target.target_floors.blank? -%>
-    active_floor("floor_<%= @target.target_floors.first.floor %>" , <%= @target.target_floors.first.floor %>);
+    active_floor("floor_<%= @target.target_floors.first.floor %>" , <%= @target.target_floors.first.id %>);
   <% end -%>
 </script>
 

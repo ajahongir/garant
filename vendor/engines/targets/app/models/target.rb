@@ -1,5 +1,6 @@
 class Target < ActiveRecord::Base
 
+  belongs_to :image
   has_many :events, :dependent => :destroy
   has_many :target_floors, :dependent => :destroy
   has_many :images, :through => :target_floors

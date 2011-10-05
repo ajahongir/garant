@@ -125,6 +125,12 @@ a {color: #006ba8}
   z-index: 1;*/
   background: url("/images/tooltip_shadow.png") no-repeat scroll -46px 0 transparent;
 }
+.one{background-color: red;}
+.two{background-color: red;}
+.three{background-color: red;}
+.four{background-color: red;}
+.five{background-color: red;}
+
 #progressbar #progressEvent {
   position: absolute;
   top: 0px;

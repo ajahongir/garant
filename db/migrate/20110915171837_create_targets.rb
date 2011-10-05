@@ -3,7 +3,7 @@ class CreateTargets < ActiveRecord::Migration
   def self.up
     create_table :targets do |t|
       t.string :name
-      t.string :photo
+      t.integer :image_id
       t.string :address
       t.text :description
       t.datetime :date_start
