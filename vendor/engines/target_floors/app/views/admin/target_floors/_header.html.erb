@@ -4,7 +4,7 @@
     <span class="preview">&nbsp;</span>
   </span>
   <span>
-    <%= select :target, :id, Target.all.map{|t| [t.name, t.id] }.unshift(["Все", nil]), {},
+    <%= select :target, :id, Target.all.map{|t| [t.name, t.id] }.unshift(["Все", nil]), {:selected => params[:target_id]},
         {:onchange => "window.location.pathname= this.value ? '/refinery/targets/'+this.value+'/target_floors' : '#{admin_target_floors_path}'"} -%>
     <span class="preview">&nbsp;</span>
   </span>

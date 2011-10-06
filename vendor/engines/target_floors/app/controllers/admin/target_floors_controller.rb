@@ -8,11 +8,10 @@ module Admin
       @target_floors = TargetFloor.paginate :per_page => 10, :page => (params[:page] || 1), :conditions => {:target_id => @target.id} unless params[:target_id].blank?
       @target_floors = TargetFloor.paginate :per_page => 10, :page => (params[:page] || 1) if params[:target_id].blank?
     end
-
+		
 		def create
-			puts "*"*100
-			puts params[:maps].inspect
 			@target_floor = TargetFloor.new(params[:target_floor])
+			@target_floor.target_id = params[:target_id] if params[:target_id]
 			img = Image.find_by_image_uid(params[:source][:url3].split('/system/images/').last)
 			@target_floor.image_id = img.id if img
 			if @target_floor.save
@@ -29,7 +28,11 @@ module Admin
 					end
 				end
         @target_floors = TargetFloor.paginate :per_page => 10, :page => (params[:page] || 1), :conditions => {:target_id => @target_floor.target_id}
-				render :index
+				if params[:target_id]
+					redirect_to target_path params[:target_id]
+				else
+					render :index
+				end
 			else
 				render :new
 			end

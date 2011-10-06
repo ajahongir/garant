@@ -9,7 +9,8 @@ class CreateTargets < ActiveRecord::Migration
       t.datetime :date_start
       t.datetime :date_end
       t.integer :position
-      t.string :localition
+      t.integer :location_image_id
+      t.string :location_url
       t.timestamps
     end
 

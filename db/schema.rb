@@ -206,7 +206,8 @@ ActiveRecord::Schema.define(:version => 20110926171528) do
     t.datetime "date_start"
     t.datetime "date_end"
     t.integer  "position"
-    t.string   "localition"
+    t.integer  "location_image_id"
+    t.string   "location_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

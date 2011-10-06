@@ -15,8 +15,14 @@
   </div>
 
   <div class='field'>
-    <%= f.label t(".localition") -%>
-    <%= f.text_field :localition, :class => 'larger widest' -%>
+    <%= f.label t(".localition_image") -%>
+    <%= select(:target, :location_image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest') -%>
+
+  </div>
+
+  <div class='field'>
+    <%= f.label t(".location_url") -%>
+    <%= f.text_field :location_url, :class => 'larger widest' -%>
   </div>
 
   <div class='field'>

@@ -49,7 +49,9 @@ header table {margin: 0px 40px;}
 #menu ul li.selected a, #menu ul li a:hover {
 /*  background: #CCC;*/
 }
-
+.menu li {
+    margin: 0 7px 0 0;
+}
 /*#Varios*/
 .left {float:left;}
 .right {float:right;}

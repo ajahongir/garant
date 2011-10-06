@@ -14,5 +14,7 @@
         :title => t('.delete'),
         :confirm => t('message', :scope => 'shared.admin.delete', :title => target.name),
         :method => :delete %>
+    <%= link_to refinery_icon_tag("add.png"), new_admin_target_target_floor_path(target),
+        :title => t('.new_target_floor') %>
   </span>
 </li>

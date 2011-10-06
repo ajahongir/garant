@@ -13,10 +13,13 @@ class Flat < ActiveRecord::Base
 		case self.img_shape
 		when "rect"
 			dots = self.img_coords.split(',')
+			left = dots.shift
+			top = dots.shift
 			return {
-				:left => dots.shift, 
-				:top => dots.shift, 
-				:width => dots.shift, :height => dots.shift}
+				:left => left, 
+				:top => top, 
+				:width => dots.shift.to_i-left.to_i, 
+				:height => dots.shift.to_i-top.to_i}
 		when "poly"
 			return {
 				:top => 0, 

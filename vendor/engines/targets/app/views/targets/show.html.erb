@@ -37,7 +37,7 @@
 		<tr>
 			<td colspan="2">
 			  <div style="height: 200px; margin: 0px 50px;" id="map_canvas">
-			    <a href="<%= @target[:localition] %>"><img src="<%= @target.localition %>"></a>
+			    <a href="<%= @target[:location_url] %>" target="_blank"><img src="/system/images/<%= @target.location_image.image_uid %>"></a>
 			  </div>
 			</td>
 			<td></td>
@@ -74,7 +74,7 @@
                   </div>
                 </div>
               <% end %>
-              <div class="left"><p style="font-size: 14px; font-weight: bold; margin-top: 20px; color: #5C5D5F;"><%= raw(@months[Time.now.month-1] +"</br>"+ Time.now.strftime("%Y")) %></p></div>
+              <div class="left" style="width: <%= @percent %>%;"><p style="font-size: 14px; text-align: right; font-weight: bold; margin-top: 20px; color: #5C5D5F;"><%= raw(@months[Time.now.month-1] +"</br>"+ Time.now.strftime("%Y")) %></p></div>
             </div>
             <div class="left"><p style="margin-top: 20px; color: #5C5D5F;"><%= raw(@months[@target.date_start.month-1] +"</br>"+ @target.date_start.strftime("%Y")) %></p></div>
 
@@ -202,10 +202,6 @@
     $('#floors #' + id).attr("class", "active");
     $('.pic_container').hide();
     $('#pic_container_'+ floor).show();
-  }
-  function flat_show(image)
-  {
-    window.location = "<%= flat_path(@target.target_floors.last.flats.last) %>";
   }
   <% unless @target.target_floors.blank? -%>
     active_floor("floor_<%= @target.target_floors.first.floor %>" , <%= @target.target_floors.first.id %>);
