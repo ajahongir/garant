@@ -1,4 +1,4 @@
-<%= form_for @target_floor, :url => admin_target_target_floors_path(params[:target_id], @target_floor) do |f| -%>
+<%= form_for @target_floor, :url => (params[:target_id] ? admin_target_target_floors_path(params[:target_id], @target_floor) : admin_target_floors_path(@target_floor) ) do |f| -%>
   <%= render :partial => "/shared/admin/error_messages", :locals => {
           :object => @target_floor,
           :include_object_name => true
@@ -31,31 +31,22 @@
 			</legend>
 			<fieldset>
 				<legend>
-					<a onclick="toggleFieldset(this.parentNode.parentNode)">Выбрать изобрадению</a>
+					<a onclick="toggleFieldset(this.parentNode.parentNode)">Выбрать изображению</a>
 				</legend>
 				<div>
 					<div class="source_desc" style="display:none">An image on your computer:</div>
 					<div class="source_url" style="display:none">
-						<iframe id="iframe_uploader"
-							name="uploader"
-							src="/targets"
-							scrolling="no"
-							noresize="noresize"
-							frameborder="no"
-							width="240"
+						<iframe id="iframe_uploader" name="uploader"	src="/targets" scrolling="no"	noresize="noresize"frameborder="no" width="240"
 							height="24"></iframe>
 					</div>
 					<a href="javascript:gui_loadImage(window.frames['uploader'].document.getElementById('src').getAttribute('rel'))" class="source_accept" style="display:none">accept</a><br/>
 				
 					<div class="source_desc" style="display:none">An image on the Internet:</div>
 					<div class="source_url" style="display:none"><input type="txt" id="source_url2" value="http://"></div>
-					<a href="javascript:gui_loadImage(document.getElementById('source_url2').value)" class="source_accept" style="display:none">accept</a><br/>
-				
 					<div class="source_desc"><%= t(".image") -%>:</div>
 					<div class="source_url">
-						<%= select :source, "url3", Image.all.map{|i| [i.image_name, "/system/images/#{i.image_uid}"]} %>
+						<%= select :source, "url3", Image.all.map{|i| [i.image_name, "/system/images/#{i.image_uid}"]},{:selected => @target_floor.image_id}, :onchange=>"javascript:gui_loadImage(this.value);" %>
 					</div>
-					<a href="javascript:gui_loadImage(document.getElementById('source_url3').value);" class="source_accept">accept</a><br/>
 				</div>
 			</fieldset>
 			<fieldset>
