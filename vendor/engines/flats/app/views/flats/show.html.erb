@@ -13,7 +13,7 @@
   <% content_for :body_content_right do %>
     <section style="float: left; padding-right: 100px;">
       <p>
-        <img width="260px" height="260px" src="/system/images/<%= @flat.image.image_uid if @flat.image %>">
+        <img src="<%= @flat.image.thumbnail('260x260!').url if @flat.image %>">
       </p>
     </section>
     <section style="float: left;">

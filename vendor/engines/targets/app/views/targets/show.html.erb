@@ -23,7 +23,7 @@
   <table>
     <tr>
       <td style="padding-left: 35px;width: 400px;">
-        <img width="400px" height="350px" src='/system/images/<%= @target.image.image_uid %>' alt="<%= @target.name %>">
+        <img width="px" height="px" src='<%= @target.image.thumbnail("500x360!").url %>' alt="<%= @target.name %>">
       </td>
       <td valign="top" style="padding-right: 35px;">
         <h1>
@@ -37,7 +37,7 @@
 		<tr>
 			<td colspan="2">
 			  <div style="height: 200px; margin: 0px 50px;" id="map_canvas">
-			    <a href="<%= @target[:location_url] %>" target="_blank"><img src="/system/images/<%= @target.location_image.image_uid %>"></a>
+			    <a href="<%= @target[:location_url] %>" target="_blank"><img src="<%= @target.location_image.thumbnail('600x225c') %>"></a>
 			  </div>
 			</td>
 			<td></td>
@@ -60,7 +60,7 @@
                     <div class="news_tool" style="padding: 80px 40px 420px 30px;">
                       <div>
                         <% EventImage.find(:all, :conditions => {:event_id => event.id}, :limit => 2, :order => "created_at desc").each do |event_image| %>
-                          <img src="/system/images/<%= event_image.image.image_uid %>" width="135px;" height="120px;">
+                          <img src="<%= event_image.image.thumbnail('135x120!').url %>">
                         <% end %>
                       </div>
                       <div style="width: 275px;">
@@ -111,7 +111,7 @@
               <% @target.events.each do |event| %>
                 <% event.images.each do |image| %>
                   <li>
-                    <img src="/system/images/<%= image.image_uid %>" width="167px;" height="162px;" alt="" />
+                    <img src="<%= image.thumbnail('167x162!').url %>" alt="<%= event.name %>" />
                     <a href="#"><%= event.name %></a>
                   </li>
                 <% end %>
@@ -164,7 +164,7 @@
         <td style="text-align: left;">
           <% @target.target_floors.each do |tf| %>
 						<div id="pic_container_<%= tf.id %>" class="pic_container" style="-moz-user-select: none; position: relative;">
-							<img src="/system/images/<%= tf.image.image_uid %>" usemap="#mapname_<%= tf.id %>">
+							<img src="<%= tf.image.thumbnail('580x450!').url %>" usemap="#mapname_<%= tf.id %>">
 							<map id="mapname_<%= tf.id %>" name="mapname_<%= tf.id %>">
 		            <% tf.flats.each do |f| %>
 									<area style="border: 1px solid red;" shape="<%= f.img_shape %>" alt="<%= f.img_alt %>" title="<%= f.img_alt %>" onMouseOver="flat_over(this);" onMouseOver="flat_out(this);" coords="<%= f.img_coords %>" href="<%= target_floor_flat_path(tf, f) %>" target="<%= f.img_target %>" />
@@ -236,7 +236,7 @@ window.onload = function(){
 			  .css("left",(e.pageX + yOffset) + "px")
 			  .fadeIn("fast");
       },
-	  function(){console.log("fadeOut");
+	  function(){
 		  $(".news_tool_shadow").fadeOut("fast");
     });
 	  $(".progress_event").mousemove(function(e){

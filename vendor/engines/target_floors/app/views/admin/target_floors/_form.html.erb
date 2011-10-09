@@ -45,7 +45,7 @@
 					<div class="source_url" style="display:none"><input type="txt" id="source_url2" value="http://"></div>
 					<div class="source_desc"><%= t(".image") -%>:</div>
 					<div class="source_url">
-						<%= select :source, :url3, Image.all.map{|i| [i.image_name, "/system/images/#{i.image_uid}"]},{:selected => @target_floor.image_id}, :onchange=>"javascript:gui_loadImage(this.value);" %>
+						<%= select :source, :url3, Image.all.map{|i| [i.image_name, "#{i.thumbnail('580x450!').url}"]},{:selected => @target_floor.image_id}, :onchange=>"javascript:gui_loadImage(this.value);" %>
 					</div>
 				</div>
 			</fieldset>
@@ -120,7 +120,6 @@
 <script type="text/javascript">
 	window.onload = function(){
 		$('#source_url3').change();
-		//$("#pic_container img").click();
 	};
 </script>
 
