@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20110926171528) do
     t.text     "description"
     t.integer  "target_id"
     t.integer  "position"
+    t.datetime "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -91,8 +92,8 @@ ActiveRecord::Schema.define(:version => 20110926171528) do
   create_table "page_translations", :force => true do |t|
     t.integer  "page_id"
     t.string   "locale"
-    t.string   "custom_title"
     t.string   "title"
+    t.string   "custom_title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

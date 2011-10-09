@@ -65,7 +65,7 @@
                       </div>
                       <div style="width: 275px;">
                         <a href="<%= event_path event %>"><h1 class="caption"><%= event.name %></h1></a>
-                        <p><%= event.created_at.strftime("%d.%m.%Y") %></p>
+                        <p><%= event.date.strftime("%d.%m.%Y") %></p>
                         <p>
                           <%= raw event.description %>
                         </p>
@@ -95,7 +95,7 @@
       <hr/>
       <section>
         <a href="<%= event_path event %>"><h1><%= event.name %></h1></a>
-        <p><%= event.created_at.strftime("%d.%m.%Y") %></p>
+        <p><%= event.date.strftime("%d.%m.%Y") %></p>
         <p>
           <%= raw event.description %>
         </p>
@@ -165,13 +165,6 @@
           <% @target.target_floors.each do |tf| %>
 						<div id="pic_container_<%= tf.id %>" class="pic_container" style="-moz-user-select: none; position: relative;">
 							<img src="/system/images/<%= tf.image.image_uid %>" usemap="#mapname_<%= tf.id %>">
-	            <% tf.flats.each do |f| %>
-								<% if f.img_shape == "rect" %>
-									<canvas id="<%= f.id %>" style="position: absolute; top: <%= f.location[:top] %>px; left: <%= f.location[:left] %>px; background-color: rgb(255, 255, 255); opacity: 0.5; width: <%= f.location[:width] %>px; height: <%= f.location[:height] %>px; border-width: 1px; border-style: solid; border-color: rgb(221, 0, 0); cursor: pointer;" width="<%= f.location[:width] %>" height="<%= f.location[:height] %>" title="<%= f.img_alt %>"></canvas>
-									<div class="imgmap_label" style="font: bold 10px Arial; position: absolute; top: 361px; left: 167px;"><%= f.img_alt %></div>
-		            <% end %>							
-	            <% end %>				
-	
 							<map id="mapname_<%= tf.id %>" name="mapname_<%= tf.id %>">
 		            <% tf.flats.each do |f| %>
 									<area style="border: 1px solid red;" shape="<%= f.img_shape %>" alt="<%= f.img_alt %>" title="<%= f.img_alt %>" onMouseOver="flat_over(this);" onMouseOver="flat_out(this);" coords="<%= f.img_coords %>" href="<%= target_floor_flat_path(tf, f) %>" target="<%= f.img_target %>" />

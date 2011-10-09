@@ -30,6 +30,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label t(".date") -%>
+    <%= select_date @event.date, :prefix => "event[date]", :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
     <%= f.label t(".target") -%>
     <%= select(:event, :target_id, Target.all.map{|t| [t.name, t.id] }, :class => 'larger widest') -%>
   </div>

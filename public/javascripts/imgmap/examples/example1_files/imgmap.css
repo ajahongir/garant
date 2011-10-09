@@ -85,7 +85,8 @@ A.source_accept:hover {
 #form_container {
 	white-space: nowrap;
 	overflow: auto;
-	height: 150px;
+	min-height: 50px;
+	padding: 20px;
 	border-top: solid 1px #bfc1c5;
 }
 
@@ -130,7 +131,7 @@ A.source_accept:hover {
 #pic_container {
 	position: relative;
 	width: 100%;
-	height: 300px;
+	min-height: 300px;
 	border: solid 0px #efefef;
 	overflow: auto;
 }

@@ -1,4 +1,4 @@
-<%= form_for @target_floor, :url => (params[:target_id] ? admin_target_target_floors_path(params[:target_id], @target_floor) : admin_target_floors_path(@target_floor) ) do |f| -%>
+<%= form_for @target_floor, :url => (params[:target_id] ? admin_target_target_floors_path(params[:target_id], @target_floor) : admin_target_floor_path(@target_floor) ) do |f| -%>
   <%= render :partial => "/shared/admin/error_messages", :locals => {
           :object => @target_floor,
           :include_object_name => true
@@ -15,12 +15,12 @@
 
   <div class='field'>
     <%= f.label t('.floor') -%>
-    <%= f.text_field :floor  -%>
+    <%= f.text_field :floor -%>
   </div>
 
   <div class='field'>
     <%= f.label t(".data") -%>
-    <%= f.text_field :data  -%>
+    <%= f.text_field :data -%>
   </div>
 
 	<div class="field">
@@ -45,7 +45,7 @@
 					<div class="source_url" style="display:none"><input type="txt" id="source_url2" value="http://"></div>
 					<div class="source_desc"><%= t(".image") -%>:</div>
 					<div class="source_url">
-						<%= select :source, "url3", Image.all.map{|i| [i.image_name, "/system/images/#{i.image_uid}"]},{:selected => @target_floor.image_id}, :onchange=>"javascript:gui_loadImage(this.value);" %>
+						<%= select :source, :url3, Image.all.map{|i| [i.image_name, "/system/images/#{i.image_uid}"]},{:selected => @target_floor.image_id}, :onchange=>"javascript:gui_loadImage(this.value);" %>
 					</div>
 				</div>
 			</fieldset>
@@ -61,19 +61,10 @@
 					<img src="/javascripts/imgmap/examples/example1_files/zoom.gif" id="i_preview" onclick="myimgmap.togglePreview();" alt="Preview image map" title="Preview image map"/>
 					<img src="/javascripts/imgmap/examples/example1_files/html.gif" onclick="gui_htmlShow()" alt="Get image map HTML" title="Get image map HTML"/>
 					<label for="dd_zoom">Zoom:</label>
-					<select onchange="gui_zoom(this)" id="dd_zoom">
-					<option value='0.25'>25%</option>
-					<option value='0.5'>50%</option>
-					<option value='1' selected="1">100%</option>
-					<option value='2'>200%</option>
-					<option value='3'>300%</option>
-					</select>
+					<%= select :dd, :zoom, [["25%", '0.25'], ["50%", '0.5'], ["100%", '1'], ["200%", '2'],["300%", '3']],{:selected => "1"}, :onchange=>"gui_zoom(this)" %>
+
 					<label for="dd_output">Output:</label> 
-					<select id="dd_output" onchange="return gui_outputChanged(this)">
-					<option value='imagemap'>Standard imagemap</option>
-					<option value='css'>CSS imagemap</option>
-					<option value='wiki'>Wiki imagemap</option>
-					</select>
+					<%= select :dd, :output, [["Standard imagemap", ''], ["CSS imagemap", 'css'], ["Wiki imagemap", 'wiki']],{}, :onchange=>"return gui_outputChanged(this)" %>
 					<div>
 						<a class="toggler toggler_off" onclick="gui_toggleMore();return false;">More actions</a>
 						<div id="more_actions" style="display: none; position: absolute;">
@@ -83,38 +74,23 @@
 					</div>
 				</div>
 				<div style="float: right; margin: 0 5px">
-					<select onchange="changelabeling(this)">
-					<option value=''>No labeling</option>
-					<option value='%n' selected='1'>Label with numbers</option>
-					<option value='%a'>Label with alt text</option>
-					<option value='%h'>Label with href</option>
-					<option value='%c'>Label with coords</option>
-					</select>
+					<%= select :label, :text, [["No labeling", ""], ["Label with numbers",'%n'],["Label with alt text", '%a'], ["Label with href", '%h'], ["Label with coords", '%c']],{:selected => "1"}, :onchange=>"changelabeling(this)" %>
 				</div>
 				</div>
 				<div id="form_container" style="clear: both;">
 				<!-- form elements come here -->
 		       	</div>
 			</fieldset>
-			<fieldset>
-				<legend>
-					<a onclick="toggleFieldset(this.parentNode.parentNode)">Image</a>
-				</legend>
-				<div id="pic_container">
-				</div>			
+			<fieldset><legend><a onclick="toggleFieldset(this.parentNode.parentNode)">Изображения</a></legend>
+				<div id="pic_container"></div>
 			</fieldset>
-			<fieldset>
-				<legend>
-					<a onclick="toggleFieldset(this.parentNode.parentNode)">Status</a>
-				</legend>
+			<fieldset><legend><a onclick="toggleFieldset(this.parentNode.parentNode)">Статус</a></legend>
 				<div id="status_container"></div>
 			</fieldset>
 			<fieldset id="fieldset_html" class="fieldset_off">
-				<legend>
-					<a onclick="toggleFieldset(this.parentNode.parentNode)">Code</a>
-				</legend>
+				<legend><a onclick="toggleFieldset(this.parentNode.parentNode)">Код</a></legend>
 				<div>
-				<div id="output_help">
+					<div id="output_help">
 				</div>
 				<textarea id="html_container"></textarea></div>
 			</fieldset>
@@ -142,6 +118,9 @@
 
 
 <script type="text/javascript">
-	window.onload = function(){};
+	window.onload = function(){
+		$('#source_url3').change();
+		//$("#pic_container img").click();
+	};
 </script>
 

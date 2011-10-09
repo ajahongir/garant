@@ -217,7 +217,8 @@ a {color: #006ba8}
 
 
 .flats #body_content_left{
-  width: 300px;
+  width: 260px;
+  margin-left: 40px;
 }
 .flats #body_content_right{
   width: 700px;
