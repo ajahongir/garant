@@ -1,4 +1,4 @@
-<%= form_for @target_floor, :url => (params[:target_id] ? admin_target_target_floors_path(params[:target_id], @target_floor) : admin_target_floors_path ) do |f| -%>
+<%= form_for @target_floor, :url => (params[:target_id] ? admin_target_target_floors_path(params[:target_id]) : admin_target_floors_path ) do |f| -%>
   <%= render :partial => "/shared/admin/error_messages", :locals => {
           :object => @target_floor,
           :include_object_name => true
