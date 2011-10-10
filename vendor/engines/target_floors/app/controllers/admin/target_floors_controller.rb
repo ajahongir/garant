@@ -15,7 +15,7 @@ module Admin
 
 			@target_floor = TargetFloor.find(params[:id])
 			@target_floor.target_id = params[:target_id] if params[:target_id]
-			img = Image.find_by_image_uid(params[:source][:url3].split('/system/images/').last)
+			puts (img = Image.find_by_image_name(params[:source][:url3].split('/').last)).inspect
 			@target_floor.image_id = img.id if img
 			if @target_floor.save
 				@target_floor.flats.clear
@@ -40,7 +40,9 @@ module Admin
 		def create
 			@target_floor = TargetFloor.new(params[:target_floor])
 			@target_floor.target_id = params[:target_id] if params[:target_id]
-			img = Image.find_by_image_uid(params[:source][:url3].split('/system/images/').last)
+			puts "*"*200
+			puts params[:source][:url3].split('/').last
+			puts (img = Image.find_by_image_name(params[:source][:url3].split('/').last)).inspect
 			@target_floor.image_id = img.id if img
 			if @target_floor.save
 				params[:maps].to_hash.each do |key, value|
@@ -56,11 +58,7 @@ module Admin
 					end
 				end
         @target_floors = TargetFloor.paginate :per_page => 10, :page => (params[:page] || 1), :conditions => {:target_id => @target_floor.target_id}
-				if params[:target_id]
-					redirect_to admin_target_path params[:target_id]
-				else
-					render :index
-				end
+				redirect_to admin_target_target_floors_path @target_floor.target_id
 			else
 				render :new
 			end
