@@ -1,84 +1,255 @@
 <script type="text/javascript" src="/javascripts/jcarousel/lib/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="/javascripts/jcarousel/lib/jquery.jcarousel.js"></script>
 <script type="text/javascript" src="/javascripts/jcarousel/lib/jquery.jcarousel.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/javascripts/jcarousel/skins/tango/skin.css" />
-<% render :partial => "/shared/content_page" %>
-<div class="home">
+<link rel="stylesheet" type="text/css" href="/javascripts/jcarousel/skins/tango/small.css"/>
 
-  <div style="heigth: 500px; width: 100%; position: relative;">
-    <div>
-      <ul id="mycarousel" class="jcarousel-skin-tango" style="heigth: 500px;">
-        <% Target.all.each do |target| %>
-          <li>
-            <img width="260px" height="300px" src="/system/images/<%= target.image.image_uid %>" alt="<%= target.name %>" />
-            <h1><%= target.name %></h1>
-            <a href="<%= target_path target %>"><%= target.address %></a>
-          </li>
-        <% end %>
-        <li>
-          <img src="/images/building1.png" alt="" width="260px" height="300px" />
-          <h1>Жилой комплекс «Вершина успеха»</h1>
-          <a href="#">г.Севастополь, ул. Ерошенко 9</a>
-        </li>
-        <li>
-          <img src="/images/building2.png" alt="" width="260px" height="300px" />
-          <h1>Жилой комплекс «Мария»</h1>
-          <a href="#">г.Севастополь, ул. Ерошенко 9</a>
-        </li>
-        <li>
-          <img src="/images/building3.png" alt="" width="260px" height="300px" />
-          <h1>Жилой дом «Толстого, 16»</h1>
-          <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
-        </li>
-        <li>
-          <img src="/images/building1.png" alt="" width="260px" height="300px" />
-          <h1>Жилой комплекс «Вершина успеха»</h1>
-          <a href="#">г.Севастополь, ул. Ерошенко 9</a>
-        </li>
-        <li>
-          <img src="/images/building3.png" alt="" width="260px" height="300px" />
-          <h1>Жилой комплекс «Мария»</h1>
-          <a href="#">г.Севастополь, ул. Ерошенко 9</a>
-        </li>
-        <li>
-          <img src="/images/building2.png" alt="" width="260px" height="300px" />
-          <h1>Жилой дом «Толстого, 16»</h1>
-          <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
-        </li>
-      </ul>
-    </div>
-  </div>
+<script type="text/javascript" src="_http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<link rel="stylesheet" type="text/css" href="/javascripts/jquery-ui-1.7.3.custom/development-bundle/themes/ui-lightness/ui.all.css"/>
+<script type="text/javascript" src="/javascripts/jquery-ui-1.7.3.custom/development-bundle/ui/ui.core.js"></script>
+<script type="text/javascript" src="/javascripts/jquery-ui-1.7.3.custom/development-bundle/ui/ui.progressbar.js"></script>
 
-  <hr/ style="clear:both">
-  <div class="blocks">
-    <table style="padding: 20px 100px 20px 0px;">
+<meta charset="utf-8">
+<style>
+  #demo-frame > div.demo { padding: 10px !important; };
+</style>
+<script>
+  $(function() {
+		$( "#progressbar" ).progressbar({
+			value: <%= @percent %>
+		});
+	});
+</script>
+
+<div class="target">
+  <table>
+    <tr>
+      <td style="padding-left: 35px;width: 400px;">
+        <img width="px" height="px" src='<%= @target.image.thumbnail("500x360!").url %>' alt="<%= @target.name %>">
+      </td>
+      <td valign="top" style="padding-right: 35px;">
+        <h1>
+          <%= @target.name %>
+        </h1>
+        <p>
+          <%= raw @target.description %>
+        </p>
+      </td>
+    </tr>
+		<tr>
+			<td colspan="2">
+			  <div style="height: 200px; margin: 0px 50px;" id="map_canvas">
+			    <a href="<%= @target[:location_url] %>" target="_blank">
+						<img src="<%= @target.location_image.thumbnail('600x225!').url %>">
+					</a>
+			</td>
+			<td></td>
+		</tr>
+  </table>
+  <br/>
+  <div class="progress">
+    <table>
       <tr>
-        <td style="width: 230px; text-align: left; padding-right: 100px;"><h1>Недвижимость Крыма</h1></td>
-        <td style="width: 600px">Рынок недвижимости Крымского полуострова, на котором уже много лет успешно конкурирует «Интерстрой», имеет свою специфику по сравнению с другими регионами Украины.
+        <td style="text-align: left; width: 200px;">
+          <h1 class="caption">Стадия строительства</h1>
+        </td>
+        <td style="width: 450px;" >
+          <div id="progressbar">
+            <div id="progresstext"><p><%= @percent %>%</p></div>
+            <div id="progressEvent">
+              <% @target.events.each do |event| %>
+                <div class="progress_event" style="width: <%= @event_percent %>%">
+                  <div class="news_tool_shadow">
+                    <div class="news_tool" style="padding: 80px 40px 420px 30px;">
+                      <div>
+                        <% EventImage.find(:all, :conditions => {:event_id => event.id}, :limit => 2, :order => "created_at desc").each do |event_image| %>
+                          <img src="<%= event_image.image.thumbnail('135x120!').url %>">
+                        <% end %>
+                      </div>
+                      <div style="width: 275px;">
+                        <a href="<%= event_path event %>"><h1 class="caption"><%= event.name %></h1></a>
+                        <p><%= event.date.strftime("%d.%m.%Y") %></p>
+                        <p>
+                          <%= raw event.description %>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <div class="left" style="width: <%= @percent %>%;"><p style="font-size: 14px; text-align: right; font-weight: bold; margin-top: 20px; color: #5C5D5F;"><%= raw(@months[Time.now.month-1] +"</br>"+ Time.now.strftime("%Y")) %></p></div>
+            </div>
+            <div class="left"><p style="margin-top: 20px; color: #5C5D5F;"><%= raw(@months[@target.date_start.month-1] +"</br>"+ @target.date_start.strftime("%Y")) %></p></div>
 
-В первую очередь, это международный центр отдыха и рекреации, поэтому наибольший интерес для застройщиков имеет Южный берег. Здесь возводится жилье элитного класса, рассчитанное на самых взыскательных клиентов. Гостиницы, пансионаты, виллы и  апартаменты эксплуатируются, как правило, только в летний период. Поэтому данный вид недвижимости можно охарактеризовать как наиболее престижный, дорогостоящий и имеющий узкоцелевую направленность.</td>
+            <div class="right"><p style="margin-top: 20px; color: #5C5D5F;"><%= raw (@months[@target.date_end.month-1] +"</br>"+ @target.date_end.strftime("%Y")) %></p></div>
+          </div>
+        </td>
       </tr>
     </table>
   </div>
 
-  <hr/ style="clear:both">
+  <% content_for :body_content_title do %>
+    <%= @target.name %>
+  <% end %>
 
-  <div class="blocks">
-    <table style="padding: 20px 100px 20px 0px;">
+
+  <% content_for :body_content_left do %>
+    <% @target.recent_events.each do |event| %>
+      <hr/>
+      <section>
+        <a href="<%= event_path event %>"><h1><%= event.name %></h1></a>
+        <p><%= event.date.strftime("%d.%m.%Y") %></p>
+        <p>
+          <%= raw event.description %>
+        </p>
+      </section>
+    <% end %>
+  <% end %>
+
+  <% content_for :body_content_right do %>
+    <aside>
+        <div style="heigth: 200px;">
+          <div>
+            <ul id="mycarousel" class="jcarousel-skin-tango" style="heigth: 200px;">
+              <% @target.events.each do |event| %>
+                <% event.images.each do |image| %>
+                  <li>
+                    <img src="<%= image.thumbnail('167x162!').url %>" alt="<%= event.name %>" />
+                    <a href="#"><%= event.name %></a>
+                  </li>
+                <% end %>
+              <% end %>
+              <li>
+                <img src="/images/building1.png" width="167px;" height="162px;" alt="" />
+                <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+              </li>
+              <li>
+                <img src="/images/building2.png" width="167px;" height="162px;" alt="" />
+                <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+              </li>
+              <li>
+                <img src="/images/building3.png" width="167px;" height="162px;" alt="" />
+                <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
+              </li>
+              <li>
+                <img src="/images/building1.png" width="167px;" height="162px;" alt="" />
+                <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+              </li>
+              <li>
+                <img src="/images/building3.png" width="167px;" height="162px;" alt="" />
+                <a href="#">г.Севастополь, ул. Ерошенко 9</a>
+              </li>
+              <li>
+                <img src="/images/building2.png" width="167px;" height="162px;" alt="" />
+                <a href="#">г. Севастополь, ул. Льва Толстого, 16</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </aside>
+  <% end %>
+  <%= render :partial => "/shared/content_page" %>
+  <hr/>
+  <section>
+    <table>
       <tr>
-        <td style="width: 230px; text-align: left; padding-right: 100px;"><h1>О выгоде инвестирования в новостройки</h1></td>
-        <td style="width: 600px">Покупка недвижимости – это долгосрочная и надежная инвестиция капитала. Приобретение квартиры в новом доме принесёт ощутимую отдачу не только в краткосрочной перспективе (вложенные вами средства будут защищены от инфляции), но и сможет также приносить стабильный доход нескольким поколениям вашей семьи (если вы в будущем намереваетесь сдавать свою недвижимость в аренду).</td>
+        <td style="text-align: left; padding-left: 35px;" valign="top">
+          <h1 class="caption">Планировки</h1>
+          <ul id="floors">
+            <% @target.target_floors.each do |f| %>
+              <li id="floor_<%= f.floor %>" onclick="active_floor('floor_<%= f.floor %>', <%= f.id %>); return false;">
+                <h1 class="caption"><%= link_to f.floor, "#" %></h1>
+              </li>
+            <% end %>
+            <div></div>
+          </ul>
+        </td>
+        <td style="text-align: left;">
+          <% @target.target_floors.each do |tf| %>
+						<div id="pic_container_<%= tf.id %>" class="pic_container" style="-moz-user-select: none; position: relative;">
+							<img src="<%= tf.image.thumbnail('580x450!').url %>" usemap="#mapname_<%= tf.id %>">
+							<map id="mapname_<%= tf.id %>" name="mapname_<%= tf.id %>">
+		            <% tf.flats.each do |f| %>
+									<area style="border: 1px solid red;" shape="<%= f.img_shape %>" alt="<%= f.img_alt %>" title="<%= f.img_alt %>" onMouseOver="flat_over(this);" onMouseOver="flat_out(this);" coords="<%= f.img_coords %>" href="<%= target_floor_flat_path(tf, f) %>" target="<%= f.img_target %>" />
+		            <% end %>							
+							</map>          
+						</div>
+          <% end %>							
+        </td>
       </tr>
     </table>
-  </div>
+  </section>
 </div>
 <script type="text/javascript">
+	function flat_over(e){
+		$(e.target).addClass("one");
+		console.log(e.target);
+	}
+
+	function flat_out(e){
+		$(e.target).removeClass("one");
+		console.log(e.target);
+	}
+
+  function active_floor(id, floor)
+  {
+    console.debug(id, floor);
+    $('#floors li').attr("class", "");
+    $('#floors #' + id).attr("class", "active");
+    $('.pic_container').hide();
+    $('#pic_container_'+ floor).show();
+  }
+  <% unless @target.target_floors.blank? -%>
+    active_floor("floor_<%= @target.target_floors.first.floor %>" , <%= @target.target_floors.first.id %>);
+  <% end -%>
+</script>
+
+<script type="text/javascript">
+  //function initialize() {
+   // var latlng = new google.maps.LatLng(-34.397, 150.644);
+  //  var myOptions = {
+   //   zoom: 8,
+   //   center: latlng,
+   //   mapTypeId: google.maps.MapTypeId.ROADMAP
+   // };
+   // var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+ // }
+window.onload = function(){
+  //initialize();
+}
+</script>
+
+<script type="text/javascript">
   jQuery(document).ready(function() {
-      jQuery('#mycarousel').jcarousel({
-          auto: 2,
-          wrap: 'circular',//last
-          animation: 8000
-      });
+    jQuery('#mycarousel').jcarousel({
+      auto: 2,
+      wrap: 'circular',
+      animation: 15000
+    });
+  });
+
+  this.tooltip = function(){
+	  /* CONFIG */
+		  xOffset = -10;
+		  yOffset = 3;
+	  /* END CONFIG */
+	  $(".progress_event").hover(function(e){
+		  $(".news_tool_shadow", e.target)
+			  .css("top",(e.pageY - xOffset) + "px")
+			  .css("left",(e.pageX + yOffset) + "px")
+			  .fadeIn("fast");
+      },
+	  function(){
+		  $(".news_tool_shadow").fadeOut("fast");
+    });
+	  $(".progress_event").mousemove(function(e){
+	  	$(".news_tool_shadow")
+	  		.css("top",(e.pageY - xOffset) + "px")
+	  		.css("left",(e.pageX + yOffset) + "px");
+	  });
+  };
+  // starting the script on page load
+  $(document).ready(function(){
+	  tooltip();
+    $(".news_tool_shadow").hide();
   });
 </script>
 
