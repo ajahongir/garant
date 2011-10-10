@@ -37,7 +37,9 @@
 		<tr>
 			<td colspan="2">
 			  <div style="height: 200px; margin: 0px 50px;" id="map_canvas">
-			    <a href="<%= @target[:location_url] %>" target="_blank"><img src="<%= @target.location_image.thumbnail('600x225!').url
+			    <a href="<%= @target[:location_url] %>" target="_blank">
+						<img src="<%= @target.location_image.thumbnail('600x225!').url %>">
+					</a>
 			</td>
 			<td></td>
 		</tr>
