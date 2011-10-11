@@ -23,7 +23,7 @@
   <table>
     <tr>
       <td style="padding-left: 35px;width: 400px;">
-        <img width="px" height="px" src="<%= @target.image.thumbnail('500x360!').url %>" alt="<%= @target.name %>">
+        <img src="<%= @target.image.thumbnail('500x360!').url %>" alt="<%= @target.name %>">
       </td>
       <td valign="top" style="padding-right: 35px;">
         <h1>
@@ -198,7 +198,7 @@ window.onload = function(){
     jQuery('#mycarousel').jcarousel({
       auto: 2,
       wrap: 'circular',
-      animation: 15000
+      animation: 8000
     });
   });
 
