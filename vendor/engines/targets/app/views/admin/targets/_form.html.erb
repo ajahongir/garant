@@ -15,13 +15,18 @@
   </div>
 
   <div class='field'>
-    <%= f.label t(".localition_image") -%>
+    <%= f.label t('.photo') -%>
+    <%= select(:target, :image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest') -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label "Карта объекта" -%>
     <%= select(:target, :location_image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest') -%>
 
   </div>
 
   <div class='field'>
-    <%= f.label t(".location_url") -%>
+    <%= f.label "URl объекта" -%>
     <%= f.text_field :location_url, :class => 'larger widest' -%>
   </div>
 
@@ -43,11 +48,6 @@
         <% end %>
       </div>
     </div>
-  </div>
-
-  <div class='field'>
-    <%= f.label t('.photo') -%>
-    <%= select(:target, :image_id, Image.all.map{|i| [i.image_name, i.id] }, :class => 'larger widest') -%>
   </div>
 
   <div class='field'>

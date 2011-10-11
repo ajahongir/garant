@@ -10,13 +10,10 @@ module Admin
     end
 		
 		def update
-			puts "*"*100
-			puts [params[:target_floor], params[:target_floor_id]].inspect 
-
 			@target_floor = TargetFloor.find(params[:id])
 			@target_floor.target_id = params[:target_id] if params[:target_id]
-			puts (img = Image.find_by_image_name(params[:source][:url3].split('/').last)).inspect
-			@target_floor.image_id = img.id if img
+			img = Image.find_by_image_name(params[:source][:url3].split('/').last)
+			@target_floor.image = img if img
 			if @target_floor.save
 				@target_floor.flats.clear
 				params[:maps].to_hash.each do |key, value|
@@ -40,10 +37,8 @@ module Admin
 		def create
 			@target_floor = TargetFloor.new(params[:target_floor])
 			@target_floor.target_id = params[:target_id] if params[:target_id]
-			puts "*"*200
-			puts params[:source][:url3].split('/').last
-			puts (img = Image.find_by_image_name(params[:source][:url3].split('/').last)).inspect
-			@target_floor.image_id = img.id if img
+			img = Image.find_by_image_name(params[:source][:url3].split('/').last)
+			@target_floor.image = img if img
 			if @target_floor.save
 				params[:maps].to_hash.each do |key, value|
 					unless value[:img_coords].blank?

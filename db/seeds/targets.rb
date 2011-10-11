@@ -10,7 +10,7 @@ end
 if defined?(Page)
   page = Page.create(
     :title => 'Наши объекты',
-    :link_url => '/targets',
+    :link_url => "/targets",
     :deletable => false,
     :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
     :menu_match => '^/targets(\/|\/.+?|)$'
