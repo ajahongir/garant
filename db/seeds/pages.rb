@@ -47,7 +47,7 @@ page_not_found_page.parts.create({
   :position => 0
 })
 
-#RefinerySetting.find_or_set(:site_name, "ГАРАНТИНВЕСТ")
+RefinerySetting.find_or_set(:site_name, "ГАРАНТИНВЕСТ")
 ##User.create({
 ##  :username => 'admin',
 ##  :email => "admin@gmail.com",
