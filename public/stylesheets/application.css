@@ -18,7 +18,7 @@ footer div {
   font-family: Georgia,Arial;
   font-size: 11px;
   color: #FFFFFF;
-  font-weight: bold;
+  font-weight: bold;</a>
 }
 #page {min-height: 700px;}
 /*Header*/
@@ -30,7 +30,7 @@ header table {margin: 0px 40px;}
 }
 /*#Menu*/
 #menu {
-  margin-left: 40px;
+  margin-left: 30px;
 }
 #menu ul {
   list-style: none;
@@ -51,7 +51,7 @@ header table {margin: 0px 40px;}
 /*  background: #CCC;*/
 }
 .menu li {
-    margin: 0 7px 0 0;
+    margin: 0 5px 0 0;
 }
 /*#Varios*/
 .left {float:left;}
