@@ -25,12 +25,12 @@ footer div {
 header { padding-top: 50px; padding-bottom: 15px;}
 header table {margin: 0px 40px;}
 .phone {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: bold;
 }
 /*#Menu*/
 #menu {
-  margin-left: 30px;
+  margin-left: 10px;
 }
 #menu ul {
   list-style: none;
